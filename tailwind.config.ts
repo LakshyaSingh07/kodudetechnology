@@ -113,7 +113,7 @@ export default {
         },
         "float-slow": {
           "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-8px)" },
+          "50%": { transform: "translateY(-5px)" },
         },
         shimmer: {
           "0%": { backgroundPosition: "-200% 0" },
@@ -159,7 +159,7 @@ export default {
         "fade-in-up": "fade-in-up 1s cubic-bezier(0.22, 1, 0.36, 1) forwards",
         "scale-in": "scale-in 0.5s ease-out forwards",
         float: "float 6s ease-in-out infinite",
-        "float-slow": "float-slow 10s ease-in-out infinite",
+        "float-slow": "float-slow 18s ease-in-out infinite",
         shimmer: "shimmer 3s linear infinite",
         glow: "glow 3s ease-in-out infinite",
         "reveal-up": "reveal-up 1s cubic-bezier(0.22, 1, 0.36, 1) forwards",
