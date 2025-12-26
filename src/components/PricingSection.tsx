@@ -93,7 +93,7 @@ const PricingSection = () => {
           {packages.map((pkg, pkgIndex) => (
             <div 
               key={pkg.name}
-              className={`relative bg-card rounded-3xl border-2 ${pkg.popular ? 'border-accent shadow-xl' : 'border-border'} overflow-hidden transition-all duration-700 hover:shadow-xl ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+              className={`relative bg-card rounded-3xl border-2 ${pkg.popular ? 'border-accent shadow-xl' : 'border-border'} overflow-hidden transition-all duration-700 hover:shadow-xl flex flex-col ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
               style={{ transitionDelay: `${pkgIndex * 150}ms` }}
             >
               {/* Badge */}
@@ -110,7 +110,7 @@ const PricingSection = () => {
                 </div>
               )}
 
-              <div className="p-6 lg:p-8">
+              <div className="p-6 lg:p-8 flex flex-col flex-1">
                 <h3 className="text-2xl font-bold text-foreground mb-2">{pkg.name} Package</h3>
                 <p className="text-muted-foreground text-sm mb-6">{pkg.description}</p>
 
@@ -121,7 +121,7 @@ const PricingSection = () => {
                   <span className="text-muted-foreground font-medium">{pkg.priceNote}</span>
                 </div>
 
-                <div className="space-y-3 mb-8">
+                <div className="space-y-3 mb-8 flex-1">
                   {pkg.features.map((feature, index) => (
                     <div 
                       key={feature} 
@@ -136,7 +136,7 @@ const PricingSection = () => {
                   ))}
                 </div>
 
-                <div className="space-y-3">
+                <div className="space-y-3 mt-auto">
                   <Button 
                     variant={pkg.popular ? "hero" : "accent"} 
                     size="lg" 
