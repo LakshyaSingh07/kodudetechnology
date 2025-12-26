@@ -1,4 +1,5 @@
 import { FileSearch, ThumbsUp, CreditCard, Laptop, Rocket } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const steps = [
   {
@@ -34,10 +35,16 @@ const steps = [
 ];
 
 const ProcessSection = () => {
+  const { ref, isVisible } = useScrollAnimation();
+
   return (
-    <section id="process" className="py-20 lg:py-28 bg-card">
+    <section 
+      id="process" 
+      className="py-20 lg:py-28 bg-card"
+      ref={ref as React.RefObject<HTMLElement>}
+    >
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="max-w-3xl mx-auto text-center mb-16">
+        <div className={`max-w-3xl mx-auto text-center mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <span className="text-accent font-semibold text-sm uppercase tracking-wider mb-4 block">
             Our Process
           </span>
@@ -52,15 +59,16 @@ const ProcessSection = () => {
         <div className="max-w-4xl mx-auto">
           <div className="relative">
             {/* Connection Line */}
-            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-border -translate-x-1/2" />
+            <div className={`hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-border -translate-x-1/2 transition-all duration-1000 origin-top ${isVisible ? 'scale-y-100' : 'scale-y-0'}`} />
 
             <div className="space-y-8 md:space-y-0">
               {steps.map((step, index) => (
                 <div
                   key={step.number}
-                  className={`relative md:grid md:grid-cols-2 md:gap-8 ${
+                  className={`relative md:grid md:grid-cols-2 md:gap-8 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} ${
                     index % 2 === 0 ? "" : "md:direction-rtl"
                   }`}
+                  style={{ transitionDelay: `${index * 150}ms` }}
                 >
                   {/* Content */}
                   <div
@@ -83,7 +91,7 @@ const ProcessSection = () => {
                   </div>
 
                   {/* Center Dot */}
-                  <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-accent border-4 border-card" />
+                  <div className={`hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-accent border-4 border-card transition-all duration-500 ${isVisible ? 'scale-100' : 'scale-0'}`} style={{ transitionDelay: `${index * 150 + 200}ms` }} />
 
                   {/* Empty space for alternating layout */}
                   {index % 2 === 0 ? (

@@ -4,12 +4,14 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { MessageCircle, Mail, Phone, MapPin, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const WHATSAPP_NUMBER = "919876543210";
 const WHATSAPP_MESSAGE = encodeURIComponent("Hi! I'm interested in getting a website for my business. Can we discuss?");
 
 const ContactSection = () => {
   const { toast } = useToast();
+  const { ref, isVisible } = useScrollAnimation();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -43,9 +45,13 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-20 lg:py-28 bg-navy-gradient text-navy-foreground">
+    <section 
+      id="contact" 
+      className="py-20 lg:py-28 bg-navy-gradient text-navy-foreground"
+      ref={ref as React.RefObject<HTMLElement>}
+    >
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="max-w-3xl mx-auto text-center mb-16">
+        <div className={`max-w-3xl mx-auto text-center mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <span className="text-accent font-semibold text-sm uppercase tracking-wider mb-4 block">
             Contact Us
           </span>
@@ -59,7 +65,7 @@ const ContactSection = () => {
 
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 max-w-5xl mx-auto">
           {/* Contact Form */}
-          <div className="bg-navy-foreground/5 rounded-2xl p-6 lg:p-8 border border-navy-foreground/10">
+          <div className={`bg-navy-foreground/5 rounded-2xl p-6 lg:p-8 border border-navy-foreground/10 transition-all duration-700 delay-150 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
             <h3 className="text-xl font-bold mb-6">Send Us a Message</h3>
             <form onSubmit={handleSubmit} className="space-y-5">
               <div>
@@ -127,7 +133,7 @@ const ContactSection = () => {
           </div>
 
           {/* Contact Info */}
-          <div className="flex flex-col justify-center">
+          <div className={`flex flex-col justify-center transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}>
             <div className="space-y-8">
               {/* WhatsApp CTA */}
               <div className="bg-[hsl(142_70%_45%)]/10 rounded-2xl p-6 border border-[hsl(142_70%_45%)]/20">
