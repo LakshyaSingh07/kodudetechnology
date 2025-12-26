@@ -73,15 +73,19 @@ const PricingSection = () => {
   return (
     <section 
       id="pricing" 
-      className="py-20 lg:py-28 bg-background"
+      className="py-20 lg:py-28 bg-background relative overflow-hidden"
       ref={ref as React.RefObject<HTMLElement>}
     >
-      <div className="container mx-auto px-4 lg:px-8">
+      {/* Decorative elements */}
+      <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-vibrant-purple/5 rounded-full blur-[120px]" />
+      <div className="absolute bottom-0 left-1/4 w-[400px] h-[400px] bg-vibrant-coral/5 rounded-full blur-[100px]" />
+      
+      <div className="container mx-auto px-4 lg:px-8 relative z-10">
         <div className={`max-w-3xl mx-auto text-center mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <span className="text-accent font-semibold text-sm uppercase tracking-wider mb-4 block">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-gradient-primary text-primary-foreground font-semibold text-sm uppercase tracking-wider mb-4">
             Pricing
           </span>
-          <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-6">
+          <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground mb-6">
             Simple, Transparent Pricing
           </h2>
           <p className="text-lg text-muted-foreground">
@@ -93,29 +97,29 @@ const PricingSection = () => {
           {packages.map((pkg, pkgIndex) => (
             <div 
               key={pkg.name}
-              className={`relative bg-card rounded-3xl border-2 ${pkg.popular ? 'border-accent shadow-xl' : 'border-border'} overflow-hidden transition-all duration-700 hover:shadow-xl flex flex-col ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+              className={`relative bg-card rounded-3xl border-2 ${pkg.popular ? 'border-primary shadow-glow' : pkg.badge ? 'border-vibrant-coral' : 'border-border'} overflow-hidden transition-all duration-700 hover:shadow-xl hover:-translate-y-2 flex flex-col ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
               style={{ transitionDelay: `${pkgIndex * 150}ms` }}
             >
               {/* Badge */}
               {pkg.popular && (
-                <div className="absolute top-0 right-0 bg-accent text-accent-foreground px-4 py-1.5 text-sm font-semibold rounded-bl-2xl flex items-center gap-1">
+                <div className="absolute top-0 right-0 bg-gradient-primary text-primary-foreground px-4 py-1.5 text-sm font-semibold rounded-bl-2xl flex items-center gap-1">
                   <Star size={14} fill="currentColor" />
                   Most Popular
                 </div>
               )}
               {pkg.badge && !pkg.popular && (
-                <div className="absolute top-0 right-0 bg-primary text-primary-foreground px-4 py-1.5 text-sm font-semibold rounded-bl-2xl flex items-center gap-1">
+                <div className="absolute top-0 right-0 bg-gradient-secondary text-secondary-foreground px-4 py-1.5 text-sm font-semibold rounded-bl-2xl flex items-center gap-1">
                   <Sparkles size={14} />
                   {pkg.badge}
                 </div>
               )}
 
               <div className="p-6 lg:p-8 flex flex-col flex-1">
-                <h3 className="text-2xl font-bold text-foreground mb-2">{pkg.name} Package</h3>
+                <h3 className="font-display text-2xl font-bold text-foreground mb-2">{pkg.name} Package</h3>
                 <p className="text-muted-foreground text-sm mb-6">{pkg.description}</p>
 
                 <div className="flex items-baseline gap-1 mb-8">
-                  <span className={`font-extrabold text-foreground ${pkg.price === "Custom" ? 'text-3xl lg:text-4xl' : 'text-4xl lg:text-5xl'}`}>
+                  <span className={`font-extrabold text-gradient ${pkg.price === "Custom" ? 'text-3xl lg:text-4xl' : 'text-4xl lg:text-5xl'}`}>
                     {pkg.price}
                   </span>
                   <span className="text-muted-foreground font-medium">{pkg.priceNote}</span>
@@ -128,8 +132,12 @@ const PricingSection = () => {
                       className={`flex items-center gap-3 transition-all duration-500 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`}
                       style={{ transitionDelay: `${300 + pkgIndex * 100 + index * 30}ms` }}
                     >
-                      <div className={`w-5 h-5 rounded-full ${pkg.popular ? 'bg-accent/20' : 'bg-primary/10'} flex items-center justify-center flex-shrink-0`}>
-                        <Check className={pkg.popular ? 'text-accent' : 'text-primary'} size={12} />
+                      <div className={`w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 ${
+                        pkg.popular ? 'bg-vibrant-purple/20' : pkg.badge ? 'bg-vibrant-coral/20' : 'bg-vibrant-cyan/20'
+                      }`}>
+                        <Check className={`${
+                          pkg.popular ? 'text-vibrant-purple' : pkg.badge ? 'text-vibrant-coral' : 'text-vibrant-cyan'
+                        }`} size={12} />
                       </div>
                       <span className="text-foreground text-sm">{feature}</span>
                     </div>
@@ -138,7 +146,7 @@ const PricingSection = () => {
 
                 <div className="space-y-3 mt-auto">
                   <Button 
-                    variant={pkg.popular ? "hero" : "accent"} 
+                    variant={pkg.popular ? "default" : pkg.badge ? "secondary" : "accent"} 
                     size="lg" 
                     className="w-full" 
                     asChild
@@ -167,7 +175,7 @@ const PricingSection = () => {
             <Phone size={16} />
             <span>
               Not sure which package is right for you?{" "}
-              <a href="#contact" className="text-accent hover:underline font-medium">
+              <a href="#contact" className="text-gradient font-semibold hover:opacity-80 transition-opacity">
                 Let's talk
               </a>
             </span>
