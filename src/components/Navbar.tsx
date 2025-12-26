@@ -42,11 +42,11 @@ const Navbar = () => {
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
+          <Link to="/" className="flex items-center gap-2 group">
+            <div className="w-10 h-10 rounded-xl bg-gradient-primary flex items-center justify-center shadow-md group-hover:shadow-glow transition-shadow">
               <span className="text-primary-foreground font-bold text-xl">K</span>
             </div>
-            <span className="font-bold text-xl text-foreground">KoDude</span>
+            <span className="font-display font-bold text-xl text-foreground">KoDude</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -55,11 +55,11 @@ const Navbar = () => {
               <Link
                 key={link.href}
                 to={link.href}
-                className={`font-medium transition-colors duration-200 ${
+                className={`font-medium transition-all duration-200 relative ${
                   location.pathname === link.href 
-                    ? "text-accent" 
+                    ? "text-primary" 
                     : "text-muted-foreground hover:text-foreground"
-                }`}
+                } after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-gradient-primary after:scale-x-0 after:origin-right after:transition-transform hover:after:scale-x-100 hover:after:origin-left`}
               >
                 {link.label}
               </Link>
