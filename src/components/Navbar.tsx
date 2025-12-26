@@ -33,20 +33,20 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? "bg-card/95 backdrop-blur-md shadow-md py-3"
+          ? "bg-background/95 backdrop-blur-md border-b border-border/50 py-3"
           : "bg-transparent py-5"
       }`}
     >
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-primary flex items-center justify-center shadow-md group-hover:shadow-glow transition-shadow">
-              <span className="text-primary-foreground font-bold text-xl">K</span>
+          <Link to="/" className="flex items-center gap-3 group">
+            <div className="w-10 h-10 rounded bg-gradient-gold flex items-center justify-center shadow-gold group-hover:shadow-glow transition-all duration-500">
+              <span className="text-primary-foreground font-display font-bold text-xl">K</span>
             </div>
-            <span className="font-display font-bold text-xl text-foreground">KoDude</span>
+            <span className="font-display text-xl text-foreground tracking-wide">KoDude</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -55,11 +55,11 @@ const Navbar = () => {
               <Link
                 key={link.href}
                 to={link.href}
-                className={`font-medium transition-all duration-200 relative ${
+                className={`text-sm font-light tracking-wide transition-all duration-300 ${
                   location.pathname === link.href 
                     ? "text-primary" 
                     : "text-muted-foreground hover:text-foreground"
-                } after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-gradient-primary after:scale-x-0 after:origin-right after:transition-transform hover:after:scale-x-100 hover:after:origin-left`}
+                }`}
               >
                 {link.label}
               </Link>
@@ -68,7 +68,7 @@ const Navbar = () => {
 
           {/* Desktop CTA */}
           <div className="hidden lg:flex items-center gap-3">
-            <Button variant="accent" size="default" asChild>
+            <Button variant="default" size="default" asChild>
               <Link to="/contact">Get Free Sample</Link>
             </Button>
           </div>
@@ -91,16 +91,16 @@ const Navbar = () => {
                 <Link
                   key={link.href}
                   to={link.href}
-                  className={`font-medium py-2 transition-colors ${
+                  className={`font-light py-2 transition-colors tracking-wide ${
                     location.pathname === link.href 
-                      ? "text-accent" 
+                      ? "text-primary" 
                       : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
                   {link.label}
                 </Link>
               ))}
-              <Button variant="accent" size="lg" className="mt-2" asChild>
+              <Button variant="default" size="lg" className="mt-2" asChild>
                 <Link to="/contact">Get Free Sample</Link>
               </Button>
             </div>

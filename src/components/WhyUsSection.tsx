@@ -40,18 +40,25 @@ const WhyUsSection = () => {
   return (
     <section 
       id="why-us" 
-      className="py-20 lg:py-28 bg-navy-gradient text-navy-foreground"
+      className="py-24 lg:py-32 bg-card relative overflow-hidden"
       ref={ref as React.RefObject<HTMLElement>}
     >
-      <div className="container mx-auto px-4 lg:px-8">
-        <div className={`max-w-3xl mx-auto text-center mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <span className="text-accent font-semibold text-sm uppercase tracking-wider mb-4 block">
+      {/* Decorative elements */}
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+      <div className="absolute top-1/2 right-0 w-[400px] h-[400px] bg-primary/3 rounded-full blur-[150px]" />
+      
+      <div className="container mx-auto px-4 lg:px-8 relative z-10">
+        <div className={`max-w-3xl mx-auto text-center mb-20 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <span className="text-primary font-light text-sm uppercase tracking-[0.3em] mb-6 block">
             Why Choose Us
           </span>
-          <h2 className="text-3xl lg:text-4xl font-bold mb-6">
-            What Sets KoDude Apart
+          <div className="luxury-divider mb-8" />
+          <h2 className="font-display text-3xl lg:text-5xl font-normal text-foreground mb-8 leading-tight">
+            What Sets KoDude <br className="hidden lg:block" />
+            <span className="text-gradient italic">Apart</span>
           </h2>
-          <p className="text-lg text-navy-foreground/70">
+          <p className="text-lg text-muted-foreground font-light leading-relaxed">
             We're not just building websites — we're building your business's digital foundation.
           </p>
         </div>
@@ -60,16 +67,16 @@ const WhyUsSection = () => {
           {reasons.map((reason, index) => (
             <div
               key={reason.title}
-              className={`group p-6 rounded-2xl border border-navy-foreground/10 hover:border-accent/30 bg-navy-foreground/5 hover:bg-navy-foreground/10 transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+              className={`group card-luxury rounded-lg p-8 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
               style={{ transitionDelay: `${index * 100}ms` }}
             >
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-xl bg-accent/20 flex items-center justify-center flex-shrink-0 group-hover:bg-accent/30 transition-colors">
-                  <reason.icon className="text-accent" size={22} />
+              <div className="flex items-start gap-5">
+                <div className="w-12 h-12 rounded border border-primary/30 flex items-center justify-center flex-shrink-0 group-hover:border-primary/60 group-hover:shadow-glow transition-all duration-500">
+                  <reason.icon className="text-primary" size={20} />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold mb-2">{reason.title}</h3>
-                  <p className="text-navy-foreground/70 text-sm leading-relaxed">{reason.description}</p>
+                  <h3 className="font-display text-lg text-foreground mb-3">{reason.title}</h3>
+                  <p className="text-muted-foreground text-sm font-light leading-relaxed">{reason.description}</p>
                 </div>
               </div>
             </div>
