@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
@@ -6,7 +8,7 @@ const Footer = () => {
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Logo */}
-          <div className="flex items-center gap-2">
+          <Link to="/" className="flex items-center gap-2">
             <div className="w-10 h-10 rounded-lg bg-accent flex items-center justify-center">
               <span className="text-accent-foreground font-bold text-xl">K</span>
             </div>
@@ -14,22 +16,22 @@ const Footer = () => {
               <span className="font-bold text-lg text-primary-foreground">KoDude Technology</span>
               <p className="text-xs text-primary-foreground/60">Where Ideas Become Digital Reality</p>
             </div>
-          </div>
+          </Link>
 
           {/* Links */}
           <div className="flex flex-wrap justify-center gap-6 text-sm">
-            <a href="#about" className="text-primary-foreground/70 hover:text-primary-foreground transition-colors">
+            <Link to="/about" className="text-primary-foreground/70 hover:text-primary-foreground transition-colors">
               About
-            </a>
-            <a href="#services" className="text-primary-foreground/70 hover:text-primary-foreground transition-colors">
+            </Link>
+            <Link to="/services" className="text-primary-foreground/70 hover:text-primary-foreground transition-colors">
               Services
-            </a>
-            <a href="#pricing" className="text-primary-foreground/70 hover:text-primary-foreground transition-colors">
+            </Link>
+            <Link to="/pricing" className="text-primary-foreground/70 hover:text-primary-foreground transition-colors">
               Pricing
-            </a>
-            <a href="#contact" className="text-primary-foreground/70 hover:text-primary-foreground transition-colors">
+            </Link>
+            <Link to="/contact" className="text-primary-foreground/70 hover:text-primary-foreground transition-colors">
               Contact
-            </a>
+            </Link>
           </div>
 
           {/* Copyright */}
