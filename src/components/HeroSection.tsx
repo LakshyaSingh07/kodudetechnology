@@ -159,7 +159,7 @@ const HeroSection = () => {
 
               {/* Floating Elements with offset parallax */}
               <div 
-                className="absolute -top-4 -right-4 card-luxury p-4 rounded-lg shadow-xl animate-float parallax-element" 
+                className="absolute -top-4 -right-4 card-luxury p-4 rounded-lg shadow-xl animate-float-slow parallax-element" 
                 style={{ 
                   animationDelay: "0.5s",
                   transform: `translate(${-mousePosition.x}px, ${-mousePosition.y}px)` 
@@ -177,9 +177,9 @@ const HeroSection = () => {
               </div>
 
               <div 
-                className="absolute -bottom-4 -left-4 card-luxury p-4 rounded-lg shadow-xl animate-float parallax-element" 
+                className="absolute -bottom-4 -left-4 card-luxury p-4 rounded-lg shadow-xl animate-float-slow parallax-element" 
                 style={{ 
-                  animationDelay: "1s",
+                  animationDelay: "2s",
                   transform: `translate(${mousePosition.x * 1.2}px, ${mousePosition.y * 1.2}px)` 
                 }}
               >
