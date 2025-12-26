@@ -73,22 +73,23 @@ const PricingSection = () => {
   return (
     <section 
       id="pricing" 
-      className="py-20 lg:py-28 bg-background relative overflow-hidden"
+      className="py-24 lg:py-32 bg-background relative overflow-hidden"
       ref={ref as React.RefObject<HTMLElement>}
     >
-      {/* Decorative elements */}
-      <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-vibrant-purple/5 rounded-full blur-[120px]" />
-      <div className="absolute bottom-0 left-1/4 w-[400px] h-[400px] bg-vibrant-coral/5 rounded-full blur-[100px]" />
+      {/* Subtle glow */}
+      <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-primary/3 rounded-full blur-[150px]" />
       
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
-        <div className={`max-w-3xl mx-auto text-center mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <span className="inline-block px-4 py-1.5 rounded-full bg-gradient-primary text-primary-foreground font-semibold text-sm uppercase tracking-wider mb-4">
+        <div className={`max-w-3xl mx-auto text-center mb-20 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <span className="text-primary font-light text-sm uppercase tracking-[0.3em] mb-6 block">
             Pricing
           </span>
-          <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground mb-6">
-            Simple, Transparent Pricing
+          <div className="luxury-divider mb-8" />
+          <h2 className="font-display text-3xl lg:text-5xl font-normal text-foreground mb-8 leading-tight">
+            Simple, Transparent <br className="hidden lg:block" />
+            <span className="text-gradient italic">Pricing</span>
           </h2>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg text-muted-foreground font-light leading-relaxed">
             Choose the package that fits your business needs.
           </p>
         </div>
@@ -97,56 +98,52 @@ const PricingSection = () => {
           {packages.map((pkg, pkgIndex) => (
             <div 
               key={pkg.name}
-              className={`relative bg-card rounded-3xl border-2 ${pkg.popular ? 'border-primary shadow-glow' : pkg.badge ? 'border-vibrant-coral' : 'border-border'} overflow-hidden transition-all duration-700 hover:shadow-xl hover:-translate-y-2 flex flex-col ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+              className={`relative card-luxury rounded-lg overflow-hidden transition-all duration-700 flex flex-col ${pkg.popular ? 'gold-border shadow-glow' : ''} ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
               style={{ transitionDelay: `${pkgIndex * 150}ms` }}
             >
               {/* Badge */}
               {pkg.popular && (
-                <div className="absolute top-0 right-0 bg-gradient-primary text-primary-foreground px-4 py-1.5 text-sm font-semibold rounded-bl-2xl flex items-center gap-1">
-                  <Star size={14} fill="currentColor" />
+                <div className="absolute top-0 right-0 bg-gradient-gold text-primary-foreground px-4 py-1.5 text-xs font-medium uppercase tracking-wider flex items-center gap-1">
+                  <Star size={12} fill="currentColor" />
                   Most Popular
                 </div>
               )}
               {pkg.badge && !pkg.popular && (
-                <div className="absolute top-0 right-0 bg-gradient-secondary text-secondary-foreground px-4 py-1.5 text-sm font-semibold rounded-bl-2xl flex items-center gap-1">
-                  <Sparkles size={14} />
+                <div className="absolute top-0 right-0 bg-champagne text-primary-foreground px-4 py-1.5 text-xs font-medium uppercase tracking-wider flex items-center gap-1">
+                  <Sparkles size={12} />
                   {pkg.badge}
                 </div>
               )}
 
-              <div className="p-6 lg:p-8 flex flex-col flex-1">
-                <h3 className="font-display text-2xl font-bold text-foreground mb-2">{pkg.name} Package</h3>
-                <p className="text-muted-foreground text-sm mb-6">{pkg.description}</p>
+              <div className="p-8 lg:p-10 flex flex-col flex-1">
+                <h3 className="font-display text-2xl text-foreground mb-2">{pkg.name} Package</h3>
+                <p className="text-muted-foreground text-sm font-light mb-8">{pkg.description}</p>
 
-                <div className="flex items-baseline gap-1 mb-8">
-                  <span className={`font-extrabold text-gradient ${pkg.price === "Custom" ? 'text-3xl lg:text-4xl' : 'text-4xl lg:text-5xl'}`}>
+                <div className="flex items-baseline gap-2 mb-10">
+                  <span className={`font-display text-gradient ${pkg.price === "Custom" ? 'text-3xl lg:text-4xl' : 'text-4xl lg:text-5xl'}`}>
                     {pkg.price}
                   </span>
-                  <span className="text-muted-foreground font-medium">{pkg.priceNote}</span>
+                  <span className="text-muted-foreground font-light text-sm">{pkg.priceNote}</span>
                 </div>
 
-                <div className="space-y-3 mb-8 flex-1">
+                <div className="space-y-4 mb-10 flex-1">
                   {pkg.features.map((feature, index) => (
                     <div 
                       key={feature} 
                       className={`flex items-center gap-3 transition-all duration-500 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`}
                       style={{ transitionDelay: `${300 + pkgIndex * 100 + index * 30}ms` }}
                     >
-                      <div className={`w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 ${
-                        pkg.popular ? 'bg-vibrant-purple/20' : pkg.badge ? 'bg-vibrant-coral/20' : 'bg-vibrant-cyan/20'
-                      }`}>
-                        <Check className={`${
-                          pkg.popular ? 'text-vibrant-purple' : pkg.badge ? 'text-vibrant-coral' : 'text-vibrant-cyan'
-                        }`} size={12} />
+                      <div className="w-5 h-5 rounded border border-primary/50 flex items-center justify-center flex-shrink-0">
+                        <Check className="text-primary" size={10} />
                       </div>
-                      <span className="text-foreground text-sm">{feature}</span>
+                      <span className="text-foreground text-sm font-light">{feature}</span>
                     </div>
                   ))}
                 </div>
 
                 <div className="space-y-3 mt-auto">
                   <Button 
-                    variant={pkg.popular ? "default" : pkg.badge ? "secondary" : "accent"} 
+                    variant={pkg.popular ? "default" : "outline"} 
                     size="lg" 
                     className="w-full" 
                     asChild
@@ -159,7 +156,7 @@ const PricingSection = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <MessageCircle className="mr-2" size={16} />
+                      <MessageCircle className="mr-2" size={14} />
                       WhatsApp
                     </a>
                   </Button>
@@ -170,12 +167,12 @@ const PricingSection = () => {
         </div>
 
         {/* Additional Note */}
-        <div className={`max-w-2xl mx-auto mt-12 text-center transition-all duration-700 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+        <div className={`max-w-2xl mx-auto mt-16 text-center transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
           <div className="flex items-center justify-center gap-2 text-muted-foreground">
-            <Phone size={16} />
-            <span>
+            <Phone size={14} />
+            <span className="font-light text-sm">
               Not sure which package is right for you?{" "}
-              <a href="#contact" className="text-gradient font-semibold hover:opacity-80 transition-opacity">
+              <a href="#contact" className="text-primary hover:underline">
                 Let's talk
               </a>
             </span>
