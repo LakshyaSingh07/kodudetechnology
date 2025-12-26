@@ -1,4 +1,5 @@
 import { Star, Quote } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const testimonials = [
   {
@@ -25,10 +26,15 @@ const testimonials = [
 ];
 
 const TestimonialsSection = () => {
+  const { ref, isVisible } = useScrollAnimation();
+
   return (
-    <section className="py-20 lg:py-28 bg-background">
+    <section 
+      className="py-20 lg:py-28 bg-background"
+      ref={ref as React.RefObject<HTMLElement>}
+    >
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="max-w-3xl mx-auto text-center mb-16">
+        <div className={`max-w-3xl mx-auto text-center mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <span className="text-accent font-semibold text-sm uppercase tracking-wider mb-4 block">
             Testimonials
           </span>
@@ -44,7 +50,8 @@ const TestimonialsSection = () => {
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="bg-card rounded-2xl p-6 lg:p-8 border border-border hover:border-accent/30 transition-all duration-300 hover:shadow-lg relative"
+              className={`bg-card rounded-2xl p-6 lg:p-8 border border-border hover:border-accent/30 transition-all duration-500 hover:shadow-lg relative ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+              style={{ transitionDelay: `${index * 150}ms` }}
             >
               {/* Quote Icon */}
               <div className="absolute top-6 right-6 text-accent/20">

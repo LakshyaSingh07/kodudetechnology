@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Check, Star, MessageCircle } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const WHATSAPP_NUMBER = "919876543210";
 const WHATSAPP_MESSAGE = encodeURIComponent("Hi! I'm interested in the Starter Package at ₹5,999. Can we discuss?");
@@ -16,10 +17,16 @@ const starterFeatures = [
 ];
 
 const PricingSection = () => {
+  const { ref, isVisible } = useScrollAnimation();
+
   return (
-    <section id="pricing" className="py-20 lg:py-28 bg-background">
+    <section 
+      id="pricing" 
+      className="py-20 lg:py-28 bg-background"
+      ref={ref as React.RefObject<HTMLElement>}
+    >
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="max-w-3xl mx-auto text-center mb-16">
+        <div className={`max-w-3xl mx-auto text-center mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <span className="text-accent font-semibold text-sm uppercase tracking-wider mb-4 block">
             Pricing
           </span>
@@ -31,7 +38,7 @@ const PricingSection = () => {
           </p>
         </div>
 
-        <div className="max-w-lg mx-auto">
+        <div className={`max-w-lg mx-auto transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'}`}>
           {/* Starter Package Card */}
           <div className="relative bg-card rounded-3xl border-2 border-accent shadow-xl overflow-hidden">
             {/* Popular Badge */}
@@ -50,8 +57,12 @@ const PricingSection = () => {
               </div>
 
               <div className="space-y-4 mb-8">
-                {starterFeatures.map((feature) => (
-                  <div key={feature} className="flex items-center gap-3">
+                {starterFeatures.map((feature, index) => (
+                  <div 
+                    key={feature} 
+                    className={`flex items-center gap-3 transition-all duration-500 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`}
+                    style={{ transitionDelay: `${300 + index * 50}ms` }}
+                  >
                     <div className="w-5 h-5 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0">
                       <Check className="text-accent" size={12} />
                     </div>
@@ -79,7 +90,7 @@ const PricingSection = () => {
           </div>
 
           {/* Custom Package Note */}
-          <div className="mt-8 text-center p-6 bg-secondary rounded-2xl">
+          <div className={`mt-8 text-center p-6 bg-secondary rounded-2xl transition-all duration-700 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
             <p className="text-foreground font-medium mb-2">Need something more?</p>
             <p className="text-muted-foreground text-sm">
               Custom packages available for larger projects with advanced features, 
