@@ -48,15 +48,24 @@ const ServicesSection = () => {
       
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         <div className={`max-w-3xl mx-auto text-center mb-20 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <span className="text-primary font-light text-sm uppercase tracking-[0.3em] mb-6 block">
+          <span className={`text-primary font-light text-sm uppercase tracking-[0.3em] mb-6 block transition-all duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`} style={{ transitionDelay: '0.1s' }}>
             Services
           </span>
-          <div className="luxury-divider mb-8" />
-          <h2 className="font-display text-3xl lg:text-5xl font-normal text-foreground mb-8 leading-tight">
-            Everything Your Business <br className="hidden lg:block" />
-            <span className="text-gradient italic">Needs Online</span>
-          </h2>
-          <p className="text-lg text-muted-foreground font-light leading-relaxed">
+          <div className={`luxury-divider mb-8 transition-all duration-700 origin-center ${isVisible ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'}`} style={{ transitionDelay: '0.2s' }} />
+          
+          {/* Text reveal */}
+          <div className="overflow-hidden mb-4">
+            <h2 className={`font-display text-3xl lg:text-5xl font-normal text-foreground leading-tight transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-full'}`} style={{ transitionDelay: '0.3s' }}>
+              Everything Your Business
+            </h2>
+          </div>
+          <div className="overflow-hidden mb-8">
+            <h2 className={`font-display text-3xl lg:text-5xl font-normal leading-tight transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-full'}`} style={{ transitionDelay: '0.4s' }}>
+              <span className="gold-shimmer italic">Needs Online</span>
+            </h2>
+          </div>
+          
+          <p className={`text-lg text-muted-foreground font-light leading-relaxed transition-all duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`} style={{ transitionDelay: '0.5s' }}>
             Comprehensive web solutions designed to establish trust and generate enquiries.
           </p>
         </div>
@@ -65,8 +74,8 @@ const ServicesSection = () => {
           {services.map((service, index) => (
             <div
               key={service.title}
-              className={`group card-luxury rounded-lg p-8 lg:p-10 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-              style={{ transitionDelay: `${index * 100}ms` }}
+              className={`group card-luxury rounded-lg p-8 lg:p-10 transition-all duration-700 hover-lift ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+              style={{ transitionDelay: `${0.6 + index * 0.1}s` }}
             >
               <div className="w-12 h-12 rounded border border-primary/30 flex items-center justify-center mb-6 group-hover:border-primary/60 group-hover:shadow-glow transition-all duration-500">
                 <service.icon className="text-primary" size={22} />

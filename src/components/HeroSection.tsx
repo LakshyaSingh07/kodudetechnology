@@ -1,19 +1,31 @@
 import { Button } from "@/components/ui/button";
 import { MessageCircle, ArrowRight } from "lucide-react";
+import { useMouseParallax } from "@/hooks/useParallax";
 
 const WHATSAPP_NUMBER = "919876543210"; // Replace with actual number
 const WHATSAPP_MESSAGE = encodeURIComponent("Hi! I'm interested in getting a free homepage sample for my business.");
 
 const HeroSection = () => {
+  const mousePosition = useMouseParallax(0.02);
+
   return (
     <section className="relative min-h-screen flex items-center pt-20 pb-16 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-background">
         {/* Subtle gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-card" />
-        {/* Gold glow accents */}
-        <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[150px] animate-glow" />
-        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-champagne/5 rounded-full blur-[120px] animate-glow" style={{ animationDelay: "1.5s" }} />
+        {/* Gold glow accents with parallax */}
+        <div 
+          className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[150px] animate-glow parallax-element" 
+          style={{ transform: `translate(${mousePosition.x * 2}px, ${mousePosition.y * 2}px)` }}
+        />
+        <div 
+          className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-champagne/5 rounded-full blur-[120px] animate-glow parallax-element" 
+          style={{ 
+            animationDelay: "1.5s",
+            transform: `translate(${-mousePosition.x * 1.5}px, ${-mousePosition.y * 1.5}px)` 
+          }} 
+        />
       </div>
 
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
@@ -28,17 +40,27 @@ const HeroSection = () => {
               Premium Web Solutions
             </div>
 
-            <h1 
-              className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-normal text-foreground leading-[1.1] mb-8 opacity-0 animate-fade-in"
-              style={{ animationDelay: "0.2s" }}
-            >
-              Where Ideas Become{" "}
-              <span className="text-gradient italic">Digital Reality.</span>
-            </h1>
+            {/* Text reveal animation for heading */}
+            <div className="overflow-hidden mb-8">
+              <h1 
+                className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-normal text-foreground leading-[1.1] opacity-0 animate-reveal-up"
+                style={{ animationDelay: "0.2s" }}
+              >
+                Where Ideas Become
+              </h1>
+            </div>
+            <div className="overflow-hidden mb-8">
+              <h1 
+                className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-normal leading-[1.1] opacity-0 animate-reveal-up"
+                style={{ animationDelay: "0.35s" }}
+              >
+                <span className="gold-shimmer italic">Digital Reality.</span>
+              </h1>
+            </div>
 
             <p 
-              className="text-lg lg:text-xl text-muted-foreground font-light max-w-xl mx-auto lg:mx-0 mb-10 leading-relaxed opacity-0 animate-fade-in"
-              style={{ animationDelay: "0.3s" }}
+              className="text-lg lg:text-xl text-muted-foreground font-light max-w-xl mx-auto lg:mx-0 mb-10 leading-relaxed opacity-0 animate-fade-blur"
+              style={{ animationDelay: "0.5s" }}
             >
               We craft modern, high-performing websites with refined aesthetics 
               and strategic architecture to elevate your business online.
@@ -46,15 +68,15 @@ const HeroSection = () => {
 
             <div 
               className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start opacity-0 animate-fade-in"
-              style={{ animationDelay: "0.4s" }}
+              style={{ animationDelay: "0.65s" }}
             >
-              <Button variant="hero" size="xl" asChild>
+              <Button variant="hero" size="xl" asChild className="hover-lift">
                 <a href="#contact" className="group">
                   Get Free Sample
                   <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={18} />
                 </a>
               </Button>
-              <Button variant="heroOutline" size="xl" asChild>
+              <Button variant="heroOutline" size="xl" asChild className="hover-lift">
                 <a 
                   href={`https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`}
                   target="_blank"
@@ -66,39 +88,42 @@ const HeroSection = () => {
               </Button>
             </div>
 
-            {/* Trust Indicators */}
+            {/* Trust Indicators with stagger animation */}
             <div 
               className="mt-16 pt-10 border-t border-border/50 opacity-0 animate-fade-in"
-              style={{ animationDelay: "0.5s" }}
+              style={{ animationDelay: "0.8s" }}
             >
               <p className="text-xs text-muted-foreground mb-6 uppercase tracking-widest">Trusted by professionals across India</p>
-              <div className="flex flex-wrap gap-10 justify-center lg:justify-start items-center">
+              <div className="flex flex-wrap gap-10 justify-center lg:justify-start items-center stagger-children">
                 <div className="text-center">
-                  <p className="text-3xl font-display text-gradient">50+</p>
+                  <p className="text-3xl font-display gold-shimmer">50+</p>
                   <p className="text-xs text-muted-foreground mt-1 uppercase tracking-wider">Projects</p>
                 </div>
                 <div className="w-px h-10 bg-border" />
                 <div className="text-center">
-                  <p className="text-3xl font-display text-gradient">7 Days</p>
+                  <p className="text-3xl font-display gold-shimmer">7 Days</p>
                   <p className="text-xs text-muted-foreground mt-1 uppercase tracking-wider">Delivery</p>
                 </div>
                 <div className="w-px h-10 bg-border" />
                 <div className="text-center">
-                  <p className="text-3xl font-display text-gradient">100%</p>
+                  <p className="text-3xl font-display gold-shimmer">100%</p>
                   <p className="text-xs text-muted-foreground mt-1 uppercase tracking-wider">Satisfaction</p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Visual */}
+          {/* Visual with parallax */}
           <div 
-            className="relative opacity-0 animate-fade-in-up hidden lg:block"
-            style={{ animationDelay: "0.3s" }}
+            className="relative opacity-0 animate-fade-blur hidden lg:block"
+            style={{ 
+              animationDelay: "0.4s",
+              transform: `translate(${mousePosition.x * 0.5}px, ${mousePosition.y * 0.5}px)` 
+            }}
           >
             <div className="relative">
               {/* Browser Mockup */}
-              <div className="card-luxury rounded-lg overflow-hidden gold-border">
+              <div className="card-luxury rounded-lg overflow-hidden gold-border hover-lift">
                 <div className="bg-muted/50 px-4 py-3 flex items-center gap-2 border-b border-border/50">
                   <div className="flex gap-1.5">
                     <div className="w-2.5 h-2.5 rounded-full bg-primary/60" />
@@ -132,8 +157,14 @@ const HeroSection = () => {
                 </div>
               </div>
 
-              {/* Floating Elements */}
-              <div className="absolute -top-4 -right-4 card-luxury p-4 rounded-lg shadow-xl animate-float" style={{ animationDelay: "0.5s" }}>
+              {/* Floating Elements with offset parallax */}
+              <div 
+                className="absolute -top-4 -right-4 card-luxury p-4 rounded-lg shadow-xl animate-float parallax-element" 
+                style={{ 
+                  animationDelay: "0.5s",
+                  transform: `translate(${-mousePosition.x}px, ${-mousePosition.y}px)` 
+                }}
+              >
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded bg-gradient-gold flex items-center justify-center">
                     <span className="text-primary-foreground text-sm">✓</span>
@@ -145,7 +176,13 @@ const HeroSection = () => {
                 </div>
               </div>
 
-              <div className="absolute -bottom-4 -left-4 card-luxury p-4 rounded-lg shadow-xl animate-float" style={{ animationDelay: "1s" }}>
+              <div 
+                className="absolute -bottom-4 -left-4 card-luxury p-4 rounded-lg shadow-xl animate-float parallax-element" 
+                style={{ 
+                  animationDelay: "1s",
+                  transform: `translate(${mousePosition.x * 1.2}px, ${mousePosition.y * 1.2}px)` 
+                }}
+              >
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded bg-[hsl(142_70%_45%)]/20 flex items-center justify-center">
                     <MessageCircle className="text-[hsl(142_70%_45%)]" size={20} />
