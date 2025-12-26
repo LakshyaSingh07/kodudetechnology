@@ -81,15 +81,24 @@ const PricingSection = () => {
       
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         <div className={`max-w-3xl mx-auto text-center mb-20 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <span className="text-primary font-light text-sm uppercase tracking-[0.3em] mb-6 block">
+          <span className={`text-primary font-light text-sm uppercase tracking-[0.3em] mb-6 block transition-all duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`} style={{ transitionDelay: '0.1s' }}>
             Pricing
           </span>
-          <div className="luxury-divider mb-8" />
-          <h2 className="font-display text-3xl lg:text-5xl font-normal text-foreground mb-8 leading-tight">
-            Simple, Transparent <br className="hidden lg:block" />
-            <span className="text-gradient italic">Pricing</span>
-          </h2>
-          <p className="text-lg text-muted-foreground font-light leading-relaxed">
+          <div className={`luxury-divider mb-8 transition-all duration-700 origin-center ${isVisible ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'}`} style={{ transitionDelay: '0.2s' }} />
+          
+          {/* Text reveal */}
+          <div className="overflow-hidden mb-4">
+            <h2 className={`font-display text-3xl lg:text-5xl font-normal text-foreground leading-tight transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-full'}`} style={{ transitionDelay: '0.3s' }}>
+              Simple, Transparent
+            </h2>
+          </div>
+          <div className="overflow-hidden mb-8">
+            <h2 className={`font-display text-3xl lg:text-5xl font-normal leading-tight transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-full'}`} style={{ transitionDelay: '0.4s' }}>
+              <span className="gold-shimmer italic">Pricing</span>
+            </h2>
+          </div>
+          
+          <p className={`text-lg text-muted-foreground font-light leading-relaxed transition-all duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`} style={{ transitionDelay: '0.5s' }}>
             Choose the package that fits your business needs.
           </p>
         </div>
@@ -98,8 +107,8 @@ const PricingSection = () => {
           {packages.map((pkg, pkgIndex) => (
             <div 
               key={pkg.name}
-              className={`relative card-luxury rounded-lg overflow-hidden transition-all duration-700 flex flex-col ${pkg.popular ? 'gold-border shadow-glow' : ''} ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-              style={{ transitionDelay: `${pkgIndex * 150}ms` }}
+              className={`relative card-luxury rounded-lg overflow-hidden transition-all duration-700 flex flex-col hover-lift ${pkg.popular ? 'gold-border shadow-glow' : ''} ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+              style={{ transitionDelay: `${0.6 + pkgIndex * 0.15}s` }}
             >
               {/* Badge */}
               {pkg.popular && (
