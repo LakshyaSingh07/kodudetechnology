@@ -1,15 +1,16 @@
-import { Helmet } from "react-helmet-async";
 import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, Calendar, Clock, User, Share2, Linkedin, Twitter, Facebook } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
+import SEO, { generateBreadcrumbSchema, generateArticleSchema } from "@/components/SEO";
 
 const blogContent: Record<string, {
   title: string;
   category: string;
   author: string;
   date: string;
+  dateISO: string;
   readTime: string;
   content: string[];
   image: string;
@@ -19,6 +20,7 @@ const blogContent: Record<string, {
     category: "Real Estate",
     author: "KoDude Team",
     date: "Dec 20, 2024",
+    dateISO: "2024-12-20",
     readTime: "5 min read",
     image: "from-primary/30 via-accent/20 to-primary/10",
     content: [
@@ -34,6 +36,7 @@ const blogContent: Record<string, {
     category: "SEO",
     author: "KoDude Team",
     date: "Dec 15, 2024",
+    dateISO: "2024-12-15",
     readTime: "7 min read",
     image: "from-accent/30 via-primary/20 to-accent/10",
     content: [
@@ -49,6 +52,7 @@ const blogContent: Record<string, {
     category: "Design",
     author: "KoDude Team",
     date: "Dec 10, 2024",
+    dateISO: "2024-12-10",
     readTime: "6 min read",
     image: "from-primary/25 via-accent/25 to-primary/15",
     content: [
@@ -64,6 +68,7 @@ const blogContent: Record<string, {
     category: "Marketing",
     author: "KoDude Team",
     date: "Dec 5, 2024",
+    dateISO: "2024-12-05",
     readTime: "4 min read",
     image: "from-accent/25 via-primary/25 to-accent/15",
     content: [
@@ -79,6 +84,7 @@ const blogContent: Record<string, {
     category: "Development",
     author: "KoDude Team",
     date: "Nov 28, 2024",
+    dateISO: "2024-11-28",
     readTime: "5 min read",
     image: "from-primary/20 via-accent/30 to-primary/20",
     content: [
@@ -94,6 +100,7 @@ const blogContent: Record<string, {
     category: "Conversion",
     author: "KoDude Team",
     date: "Nov 20, 2024",
+    dateISO: "2024-11-20",
     readTime: "8 min read",
     image: "from-accent/20 via-primary/30 to-accent/20",
     content: [
@@ -113,6 +120,11 @@ const BlogPost = () => {
   if (!post) {
     return (
       <>
+        <SEO
+          title="Post Not Found"
+          description="The blog post you are looking for could not be found."
+          noIndex={true}
+        />
         <Navbar />
         <div className="min-h-screen flex items-center justify-center bg-background">
           <div className="text-center">
@@ -129,10 +141,33 @@ const BlogPost = () => {
 
   return (
     <>
-      <Helmet>
-        <title>{post.title} | KoDude Technology Blog</title>
-        <meta name="description" content={post.content[0].substring(0, 160)} />
-      </Helmet>
+      <SEO
+        title={post.title}
+        description={post.content[0].substring(0, 160)}
+        canonical={`/blog/${id}`}
+        type="article"
+        publishedTime={post.dateISO}
+        author={post.author}
+        keywords={[
+          post.category.toLowerCase(),
+          "web development",
+          "business tips",
+          "digital marketing",
+        ]}
+        structuredData={[
+          generateBreadcrumbSchema([
+            { name: "Home", url: "/" },
+            { name: "Blog", url: "/blog" },
+            { name: post.title, url: `/blog/${id}` },
+          ]),
+          generateArticleSchema({
+            title: post.title,
+            description: post.content[0],
+            url: `/blog/${id}`,
+            publishedTime: post.dateISO,
+          }),
+        ]}
+      />
 
       <main className="min-h-screen">
         <Navbar />
@@ -166,7 +201,7 @@ const BlogPost = () => {
                 </span>
                 <span className="flex items-center gap-2">
                   <Calendar className="w-4 h-4" />
-                  {post.date}
+                  <time dateTime={post.dateISO}>{post.date}</time>
                 </span>
                 <span className="flex items-center gap-2">
                   <Clock className="w-4 h-4" />
@@ -200,13 +235,13 @@ const BlogPost = () => {
                     Share this article
                   </span>
                   <div className="flex gap-3">
-                    <Button variant="outline" size="icon" className="rounded-full">
+                    <Button variant="outline" size="icon" className="rounded-full" aria-label="Share on Twitter">
                       <Twitter className="w-4 h-4" />
                     </Button>
-                    <Button variant="outline" size="icon" className="rounded-full">
+                    <Button variant="outline" size="icon" className="rounded-full" aria-label="Share on LinkedIn">
                       <Linkedin className="w-4 h-4" />
                     </Button>
-                    <Button variant="outline" size="icon" className="rounded-full">
+                    <Button variant="outline" size="icon" className="rounded-full" aria-label="Share on Facebook">
                       <Facebook className="w-4 h-4" />
                     </Button>
                   </div>
@@ -219,7 +254,7 @@ const BlogPost = () => {
                   Ready to Transform Your Business?
                 </h3>
                 <p className="text-muted-foreground mb-6">
-                  Let's discuss how we can help you achieve your digital goals.
+                  Let us discuss how we can help you achieve your digital goals.
                 </p>
                 <Button asChild>
                   <Link to="/contact">Get Started Today</Link>

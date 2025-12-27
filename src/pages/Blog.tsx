@@ -1,9 +1,9 @@
-import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
-import { ArrowRight, Calendar, Clock, User } from "lucide-react";
+import { ArrowRight, Calendar, Clock } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import SEO, { generateBreadcrumbSchema } from "@/components/SEO";
 
 const blogPosts = [
   {
@@ -68,18 +68,58 @@ const blogPosts = [
   },
 ];
 
+const blogListSchema = {
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  name: "KoDude Technology Blog",
+  description: "Web development insights, SEO tips, and digital marketing strategies",
+  url: "https://kodude.in/blog",
+  publisher: {
+    "@type": "Organization",
+    name: "KoDude Technology",
+    logo: {
+      "@type": "ImageObject",
+      url: "https://kodude.in/favicon.ico",
+    },
+  },
+  blogPost: blogPosts.map((post) => ({
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt,
+    url: `https://kodude.in/blog/${post.id}`,
+    datePublished: post.date,
+    author: {
+      "@type": "Organization",
+      name: post.author,
+    },
+  })),
+};
+
 const Blog = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
     <>
-      <Helmet>
-        <title>Blog | KoDude Technology - Web Development Insights & Tips</title>
-        <meta
-          name="description"
-          content="Stay updated with the latest web development trends, SEO tips, and digital marketing strategies from KoDude Technology experts."
-        />
-      </Helmet>
+      <SEO
+        title="Blog"
+        description="Stay updated with the latest web development trends, SEO tips, and digital marketing strategies from KoDude Technology experts. Learn how to grow your business online."
+        canonical="/blog"
+        keywords={[
+          "web development blog",
+          "SEO tips",
+          "digital marketing strategies",
+          "website design tips",
+          "real estate marketing",
+          "business growth online",
+        ]}
+        structuredData={[
+          generateBreadcrumbSchema([
+            { name: "Home", url: "/" },
+            { name: "Blog", url: "/blog" },
+          ]),
+          blogListSchema,
+        ]}
+      />
 
       <main className="min-h-screen">
         <Navbar />

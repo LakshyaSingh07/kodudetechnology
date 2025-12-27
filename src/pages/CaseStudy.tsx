@@ -1,9 +1,9 @@
-import { Helmet } from "react-helmet-async";
 import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, ArrowUpRight, CheckCircle2, TrendingUp, Users, Clock, Target } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
+import SEO, { generateBreadcrumbSchema } from "@/components/SEO";
 
 const caseStudies: Record<string, {
   title: string;
@@ -71,7 +71,7 @@ const caseStudies: Record<string, {
       "Contact and inquiry forms",
     ],
     testimonial: {
-      quote: "Our website now truly represents the quality of our work. We've received inquiries from clients we never would have reached before. The investment has paid for itself many times over.",
+      quote: "Our website now truly represents the quality of our work. We have received inquiries from clients we never would have reached before. The investment has paid for itself many times over.",
       author: "Anil Mehta",
       role: "Director, Horizon Builders",
     },
@@ -114,6 +114,11 @@ const CaseStudy = () => {
   if (!study) {
     return (
       <>
+        <SEO
+          title="Case Study Not Found"
+          description="The case study you are looking for could not be found."
+          noIndex={true}
+        />
         <Navbar />
         <div className="min-h-screen flex items-center justify-center bg-background">
           <div className="text-center">
@@ -128,12 +133,48 @@ const CaseStudy = () => {
     );
   }
 
+  const caseStudySchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: `${study.title} Case Study`,
+    description: study.overview,
+    author: {
+      "@type": "Organization",
+      name: "KoDude Technology",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "KoDude Technology",
+    },
+    about: {
+      "@type": "Thing",
+      name: study.category,
+    },
+  };
+
   return (
     <>
-      <Helmet>
-        <title>{study.title} Case Study | KoDude Technology</title>
-        <meta name="description" content={study.overview.substring(0, 160)} />
-      </Helmet>
+      <SEO
+        title={`${study.title} Case Study`}
+        description={study.overview.substring(0, 160)}
+        canonical={`/case-study/${id}`}
+        type="article"
+        keywords={[
+          study.category.toLowerCase(),
+          "case study",
+          "web development project",
+          "client success story",
+          "portfolio",
+        ]}
+        structuredData={[
+          generateBreadcrumbSchema([
+            { name: "Home", url: "/" },
+            { name: "Portfolio", url: "/portfolio" },
+            { name: study.title, url: `/case-study/${id}` },
+          ]),
+          caseStudySchema,
+        ]}
+      />
 
       <main className="min-h-screen">
         <Navbar />
@@ -179,7 +220,7 @@ const CaseStudy = () => {
               {study.results.map((result) => (
                 <div key={result.label} className="text-center">
                   <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-primary/10 flex items-center justify-center">
-                    <result.icon className="w-6 h-6 text-primary" />
+                    <result.icon className="w-6 h-6 text-primary" aria-hidden="true" />
                   </div>
                   <div className="font-display text-3xl md:text-4xl text-primary mb-2">
                     {result.value}
@@ -228,7 +269,7 @@ const CaseStudy = () => {
                     key={feature}
                     className="flex items-center gap-3 p-4 bg-background rounded-xl border border-border"
                   >
-                    <CheckCircle2 className="w-5 h-5 text-primary shrink-0" />
+                    <CheckCircle2 className="w-5 h-5 text-primary shrink-0" aria-hidden="true" />
                     <span className="text-foreground">{feature}</span>
                   </div>
                 ))}
@@ -241,7 +282,7 @@ const CaseStudy = () => {
         <section className="py-20 bg-background">
           <div className="container mx-auto px-4 lg:px-8">
             <div className="max-w-3xl mx-auto text-center">
-              <div className="text-6xl text-primary/30 mb-6">"</div>
+              <div className="text-6xl text-primary/30 mb-6" aria-hidden="true">"</div>
               <blockquote className="font-display text-xl md:text-2xl text-foreground mb-8 leading-relaxed">
                 {study.testimonial.quote}
               </blockquote>
@@ -260,7 +301,7 @@ const CaseStudy = () => {
               Ready for Similar Results?
             </h2>
             <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
-              Let's discuss how we can help transform your business with a stunning website.
+              Let us discuss how we can help transform your business with a stunning website.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Button asChild size="lg">
