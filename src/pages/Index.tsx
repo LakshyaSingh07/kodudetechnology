@@ -4,6 +4,7 @@ import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
 import ServicesSection from "@/components/ServicesSection";
 import PortfolioSection from "@/components/PortfolioSection";
+import StatsSection from "@/components/StatsSection";
 import WhyUsSection from "@/components/WhyUsSection";
 import PricingSection from "@/components/PricingSection";
 import ProcessSection from "@/components/ProcessSection";
@@ -12,6 +13,7 @@ import FAQSection from "@/components/FAQSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+import ChatWidget from "@/components/ChatWidget";
 
 const Index = () => {
   return (
@@ -47,6 +49,7 @@ const Index = () => {
         <AboutSection />
         <ServicesSection />
         <PortfolioSection />
+        <StatsSection />
         <WhyUsSection />
         <PricingSection />
         <ProcessSection />
@@ -55,6 +58,7 @@ const Index = () => {
         <ContactSection />
         <Footer />
         <FloatingWhatsApp />
+        <ChatWidget />
       </main>
     </>
   );
