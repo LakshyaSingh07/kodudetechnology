@@ -26,7 +26,7 @@ const SEO = ({
   canonical,
   type = "website",
   image = DEFAULT_IMAGE,
-  imageAlt = "KoDude Technology - Premium Web Development",
+  imageAlt = "KoDude Technology - Where Ideas Become Digital Reality",
   publishedTime,
   modifiedTime,
   author = "KoDude Technology",
@@ -45,6 +45,7 @@ const SEO = ({
     "India",
     "affordable web design",
     "KoDude Technology",
+    "KoDude"
   ];
   
   const allKeywords = [...new Set([...keywords, ...defaultKeywords])];
@@ -56,23 +57,23 @@ const SEO = ({
     name: "KoDude Technology",
     url: SITE_URL,
     logo: `${SITE_URL}/favicon.ico`,
-    description: "Premium web development services for real estate agents and businesses in India",
+    description: "Premium web development services for local businesses in India",
     address: {
       "@type": "PostalAddress",
-      addressLocality: "San Francisco",
-      addressRegion: "CA",
-      addressCountry: "US",
+      addressLocality: "Noida",
+      addressRegion: "IN",
+      addressCountry: "IN",
     },
     contactPoint: {
       "@type": "ContactPoint",
-      telephone: "+1-234-567-890",
+      telephone: "+91-8077533278",
       contactType: "sales",
-      email: "hello@kodude.com",
+      email: "kodude.in@gmail.com",
     },
     sameAs: [
       "https://twitter.com/kodudetech",
       "https://linkedin.com/company/kodude",
-      "https://instagram.com/kodudetech",
+      "https://instagram.com/kodude.in",
     ],
   };
 
@@ -242,16 +243,16 @@ export const generateLocalBusinessSchema = () => ({
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   name: "KoDude Technology",
-  description: "Premium web development services for real estate agents and businesses",
+  description: "Premium web development services for local businesses in India",
   url: "https://kodude.in",
-  telephone: "+1-234-567-890",
-  email: "hello@kodude.com",
+  telephone: "+91-8077533278",
+  email: "kodude.in@gmail.com",
   priceRange: "₹₹",
   address: {
     "@type": "PostalAddress",
-    addressLocality: "San Francisco",
-    addressRegion: "CA",
-    addressCountry: "US",
+    addressLocality: "Noida",
+    addressRegion: "UP",
+    addressCountry: "IN",
   },
   openingHoursSpecification: {
     "@type": "OpeningHoursSpecification",
