@@ -37,7 +37,7 @@ const Footer = () => {
       {/* Main footer content */}
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         {/* CTA Section */}
-        <div className="py-16 border-b border-border/10">
+        {/* <div className="py-16 border-b border-border/10">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-foreground mb-4">
               Ready to Build Something
@@ -54,7 +54,7 @@ const Footer = () => {
               <ArrowUpRight className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
             </Link>
           </div>
-        </div>
+        </div> */}
 
         {/* Links Grid */}
         <div className="py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
