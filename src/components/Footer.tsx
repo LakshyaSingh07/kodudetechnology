@@ -130,22 +130,22 @@ const Footer = () => {
                   className="flex items-center gap-3 text-muted-foreground hover:text-primary text-sm font-light transition-colors duration-300"
                 >
                   <Mail className="w-4 h-4 text-primary/70" />
-                  hello@kodude.com
+                  kodude.in@gmail.com
                 </a>
               </li>
               <li>
                 <a 
-                  href="tel:+1234567890" 
+                  href="tel:+918077533278" 
                   className="flex items-center gap-3 text-muted-foreground hover:text-primary text-sm font-light transition-colors duration-300"
                 >
                   <Phone className="w-4 h-4 text-primary/70" />
-                  +1 (234) 567-890
+                  +91 80775 33278
                 </a>
               </li>
               <li>
                 <span className="flex items-start gap-3 text-muted-foreground text-sm font-light">
                   <MapPin className="w-4 h-4 text-primary/70 mt-0.5 shrink-0" />
-                  San Francisco, CA
+                  Noida, India
                 </span>
               </li>
             </ul>

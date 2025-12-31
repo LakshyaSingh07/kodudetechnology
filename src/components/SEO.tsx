@@ -34,21 +34,15 @@ const SEO = ({
   noIndex = false,
   structuredData,
 }: SEOProps) => {
+  const toAbsoluteUrl = (value?: string) => {
+    if (!value) return undefined;
+    return value.startsWith("http") ? value : `${SITE_URL}${value.startsWith("/") ? value : `/${value}`}`;
+  };
+
   const fullTitle = title.includes("KoDude") ? title : `${title} | ${SITE_NAME}`;
-  const canonicalUrl = canonical ? `${SITE_URL}${canonical}` : undefined;
-  
-  const defaultKeywords = [
-    "web development",
-    "website design",
-    "real estate website",
-    "business website",
-    "India",
-    "affordable web design",
-    "KoDude Technology",
-    "KoDude"
-  ];
-  
-  const allKeywords = [...new Set([...keywords, ...defaultKeywords])];
+  const canonicalUrl = toAbsoluteUrl(canonical);
+  const imageUrl = toAbsoluteUrl(image) ?? DEFAULT_IMAGE;
+  const metaKeywords = keywords.length ? Array.from(new Set(keywords)).join(", ") : undefined;
 
   // Organization structured data (always included)
   const organizationSchema = {
@@ -83,11 +77,6 @@ const SEO = ({
     "@type": "WebSite",
     name: SITE_NAME,
     url: SITE_URL,
-    potentialAction: {
-      "@type": "SearchAction",
-      target: `${SITE_URL}/search?q={search_term_string}`,
-      "query-input": "required name=search_term_string",
-    },
   };
 
   // Combine all structured data
@@ -102,7 +91,7 @@ const SEO = ({
       {/* Basic Meta Tags */}
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
-      <meta name="keywords" content={allKeywords.join(", ")} />
+      {metaKeywords && <meta name="keywords" content={metaKeywords} />}
       <meta name="author" content={author} />
       <meta name="robots" content={noIndex ? "noindex, nofollow" : "index, follow"} />
       <meta name="googlebot" content={noIndex ? "noindex, nofollow" : "index, follow"} />
@@ -115,7 +104,7 @@ const SEO = ({
       <meta property="og:site_name" content={SITE_NAME} />
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
-      <meta property="og:image" content={image} />
+      <meta property="og:image" content={imageUrl} />
       <meta property="og:image:alt" content={imageAlt} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
@@ -139,7 +128,7 @@ const SEO = ({
       <meta name="twitter:creator" content={TWITTER_HANDLE} />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={image} />
+      <meta name="twitter:image" content={imageUrl} />
       <meta name="twitter:image:alt" content={imageAlt} />
       
       {/* Additional SEO Tags */}
@@ -148,8 +137,8 @@ const SEO = ({
       <meta name="format-detection" content="telephone=no" />
       
       {/* Geo Tags for Local SEO */}
-      <meta name="geo.region" content="IN" />
-      <meta name="geo.placename" content="India" />
+      <meta name="geo.region" content="IN-UP" />
+      <meta name="geo.placename" content="Noida, Uttar Pradesh" />
       
       {/* Structured Data */}
       {allStructuredData.map((data, index) => (
@@ -259,10 +248,5 @@ export const generateLocalBusinessSchema = () => ({
     dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
     opens: "09:00",
     closes: "18:00",
-  },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.9",
-    reviewCount: "120",
   },
 });
