@@ -9,8 +9,8 @@ const reasons = [
   },
   {
     icon: Home,
-    title: "Real Estate Focused",
-    description: "We understand property businesses. Our designs are built to showcase listings and generate buyer interest.",
+    title: "User-Focused Design",
+    description: "We design websites with your audience in mind, ensuring clear structure, intuitive navigation, and layouts that guide visitors to take action.",
   },
   {
     icon: FileCheck,

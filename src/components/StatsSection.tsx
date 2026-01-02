@@ -4,28 +4,28 @@ import { Briefcase, Users, Award, Clock } from "lucide-react";
 const stats = [
   {
     icon: Briefcase,
-    value: 150,
+    value: 15,
     suffix: "+",
     label: "Projects Completed",
     description: "Successful deliveries",
   },
   {
     icon: Users,
-    value: 120,
+    value: 12,
     suffix: "+",
     label: "Happy Clients",
     description: "Across industries",
   },
   {
     icon: Award,
-    value: 5,
+    value: 2,
     suffix: "+",
     label: "Years Experience",
     description: "In web development",
   },
   {
     icon: Clock,
-    value: 99,
+    value: 98,
     suffix: "%",
     label: "On-Time Delivery",
     description: "Reliable & punctual",

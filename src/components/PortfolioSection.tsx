@@ -5,24 +5,24 @@ import { Link } from "react-router-dom";
 
 const projects = [
   {
-    slug: "sharma-properties",
-    title: "Sharma Properties",
-    category: "Real Estate Agent",
-    description: "A modern property listing website with WhatsApp integration that increased client enquiries by 40%.",
+    slug: "tanish-rc",
+    title: "Tanish RC",
+    category: "Ecommerce Store",
+    description: "Modern ecommerce website for RC Planes and accessories with seamless shopping experience.",
     icon: Home,
     gradient: "from-primary/20 via-accent/10 to-primary/5",
-    features: ["Property Listings", "WhatsApp CTA", "Contact Form"],
+    features: ["Product Listings", "WhatsApp CTA", "Contact Form"],
     previewUrl: "https://tanishrc.in",
   },
   {
-    slug: "horizon-builders",
-    title: "Horizon Builders",
-    category: "Construction Company",
-    description: "Premium corporate website showcasing ongoing projects and company portfolio with elegant design.",
+    slug: "lakshya-singh",
+    title: "Lakshya Singh",
+    category: "Portfolio Site",
+    description: "Personal portfolio showcasing projects and skills with a clean, professional design.",
     icon: Building2,
     gradient: "from-accent/20 via-primary/10 to-accent/5",
     features: ["Project Gallery", "About Section", "Lead Capture"],
-    previewUrl: "https://tanishrc.in",
+    previewUrl: "https://lakshyasingh.com",
 
   },
   {
