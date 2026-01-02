@@ -34,15 +34,13 @@ const AboutSection = () => {
           </div>
           
           <p className={`text-lg text-muted-foreground font-light leading-relaxed transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`} style={{ transitionDelay: '0.5s' }}>
-            KoDude Technology specializes in creating professional, conversion-focused websites 
-            for real estate professionals and businesses across India. We understand that your 
-            website is often the first impression clients have of your business — and we make it count.
+            KoDude Technology specializes in creating professional, conversion-focused websites for businesses across India. We understand that your website is often the first impression clients have of your brand — and we make it count.
           </p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
           {[
-            { icon: Target, title: "Focused Approach", description: "We specialize in real estate and business websites, understanding exactly what your clients need to see." },
+            { icon: Target, title: "Focused Approach", description: "We design websites with a clear understanding of what your clients need to see, trust, and act on." },
             { icon: TrendingUp, title: "Growth Driven", description: "Every design decision is made with lead generation in mind — from layout to call-to-action placement." },
             { icon: Users, title: "Client-First", description: "Transparent process, fair pricing, and dedicated support. Your success is our priority." },
           ].map((item, index) => (

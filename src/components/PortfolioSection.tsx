@@ -12,6 +12,7 @@ const projects = [
     icon: Home,
     gradient: "from-primary/20 via-accent/10 to-primary/5",
     features: ["Property Listings", "WhatsApp CTA", "Contact Form"],
+    previewUrl: "https://tanishrc.in",
   },
   {
     slug: "horizon-builders",
@@ -21,6 +22,8 @@ const projects = [
     icon: Building2,
     gradient: "from-accent/20 via-primary/10 to-accent/5",
     features: ["Project Gallery", "About Section", "Lead Capture"],
+    previewUrl: "https://tanishrc.in",
+
   },
   {
     slug: "metro-realty",
@@ -65,11 +68,11 @@ const PortfolioSection = () => {
             >
               <div className="bg-card rounded-2xl border border-border overflow-hidden hover:border-primary/50 transition-all duration-500 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-2">
                 {/* Project Preview */}
-                <div className={`relative h-48 bg-gradient-to-br ${project.gradient} overflow-hidden`}>
+                <div className={`relative h-56 bg-gradient-to-br ${project.gradient} overflow-hidden`}>
                   {/* Browser Mockup */}
-                  <div className="absolute inset-4 bg-card rounded-lg shadow-lg overflow-hidden border border-border/50 group-hover:scale-[1.02] transition-transform duration-500">
+                  <div className="absolute inset-4 bg-card rounded-lg shadow-lg overflow-hidden border border-border/50 group-hover:scale-[1.02] transition-transform duration-500 flex flex-col">
                     {/* Browser Header */}
-                    <div className="h-6 bg-secondary flex items-center px-3 gap-1.5">
+                    <div className="h-6 bg-secondary flex items-center px-3 gap-1.5 shrink-0">
                       <div className="w-2 h-2 rounded-full bg-destructive/60" />
                       <div className="w-2 h-2 rounded-full bg-yellow-500/60" />
                       <div className="w-2 h-2 rounded-full bg-green-500/60" />
@@ -77,17 +80,31 @@ const PortfolioSection = () => {
                         <div className="h-3 bg-muted rounded-full max-w-[120px]" />
                       </div>
                     </div>
-                    {/* Content Preview */}
-                    <div className="p-3 space-y-2">
-                      <div className="h-8 bg-primary/10 rounded" />
-                      <div className="grid grid-cols-3 gap-2">
-                        <div className="h-12 bg-muted rounded" />
-                        <div className="h-12 bg-muted rounded" />
-                        <div className="h-12 bg-muted rounded" />
+                    {/* Live Preview or Fallback */}
+                    {project.previewUrl ? (
+                      <div className="relative flex-1 overflow-hidden bg-background">
+                        {/* Force desktop layout by rendering a large viewport and scaling it down */}
+                        <iframe
+                          title={`${project.title} preview`}
+                          src={project.previewUrl}
+                          loading="lazy"
+                          className="absolute top-0 left-0 w-[1280px] h-[720px] origin-top-left scale-[0.28] md:scale-[0.32] lg:scale-[0.34] border-0 pointer-events-none"
+                          referrerPolicy="no-referrer"
+                          sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-pointer-lock allow-popups-to-escape-sandbox"
+                        />
                       </div>
-                      <div className="h-3 bg-muted rounded w-3/4" />
-                      <div className="h-3 bg-muted rounded w-1/2" />
-                    </div>
+                    ) : (
+                      <div className="flex-1 p-3 space-y-2 bg-gradient-to-b from-background/30 to-background/10">
+                        <div className="h-8 bg-primary/10 rounded" />
+                        <div className="grid grid-cols-3 gap-2">
+                          <div className="h-12 bg-muted rounded" />
+                          <div className="h-12 bg-muted rounded" />
+                          <div className="h-12 bg-muted rounded" />
+                        </div>
+                        <div className="h-3 bg-muted rounded w-3/4" />
+                        <div className="h-3 bg-muted rounded w-1/2" />
+                      </div>
+                    )}
                   </div>
                   
                   {/* Icon Overlay */}

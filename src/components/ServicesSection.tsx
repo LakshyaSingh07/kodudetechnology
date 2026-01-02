@@ -14,7 +14,7 @@ const services = [
   },
   {
     icon: Search,
-    title: "Basic SEO",
+    title: "SEO",
     description: "Every website includes fundamental SEO setup — meta tags, structured data, and Google-friendly architecture.",
   },
   {
