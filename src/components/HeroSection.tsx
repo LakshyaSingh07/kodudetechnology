@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { MessageCircle, ArrowRight } from "lucide-react";
 import { useMouseParallax } from "@/hooks/useParallax";
 
-const WHATSAPP_NUMBER = "919876543210"; // Replace with actual number
+const WHATSAPP_NUMBER = "918077533278";
 const WHATSAPP_MESSAGE = encodeURIComponent("Hi! I'm interested in getting a free homepage sample for my business.");
 
 const HeroSection = () => {
@@ -132,7 +132,7 @@ const HeroSection = () => {
                   </div>
                   <div className="flex-1 mx-4">
                     <div className="bg-background/50 rounded px-3 py-1.5 text-xs text-muted-foreground text-center font-light tracking-wide">
-                      yourproperty.com
+                      yourwebsite.com
                     </div>
                   </div>
                 </div>
@@ -141,14 +141,14 @@ const HeroSection = () => {
                     <span className="text-3xl">🏠</span>
                   </div>
                   <div className="text-center">
-                    <h3 className="text-xl font-display text-foreground mb-3">Premium Property Website</h3>
+                    <h3 className="text-xl font-display text-foreground mb-3">Premium Websites</h3>
                     <p className="text-muted-foreground text-sm font-light max-w-xs leading-relaxed">
-                      Showcase your properties with elegant, conversion-focused design
+                      Showcase your brand with clean, conversion-focused design.  
                     </p>
                   </div>
                   <div className="mt-8 flex gap-3">
                     <div className="px-5 py-2.5 bg-gradient-gold text-primary-foreground rounded text-xs font-medium uppercase tracking-wider">
-                      View Properties
+                      Explore
                     </div>
                     <div className="px-5 py-2.5 bg-transparent text-foreground rounded text-xs font-medium border border-border uppercase tracking-wider">
                       Contact
