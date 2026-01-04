@@ -6,8 +6,10 @@ import { MessageCircle, Mail, Phone, MapPin, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
-const WHATSAPP_NUMBER = "919876543210";
-const WHATSAPP_MESSAGE = encodeURIComponent("Hi! I'm interested in getting a website for my business. Can we discuss?");
+const WHATSAPP_NUMBER = "918077533278";
+const WHATSAPP_MESSAGE = encodeURIComponent(
+  "Hi! I'm interested in getting a website for my business. Can we discuss?"
+);
 
 const ContactSection = () => {
   const { toast } = useToast();
@@ -45,17 +47,21 @@ const ContactSection = () => {
   };
 
   return (
-    <section 
-      id="contact" 
+    <section
+      id="contact"
       className="py-24 lg:py-32 bg-navy relative overflow-hidden"
       ref={ref as React.RefObject<HTMLElement>}
     >
       {/* Decorative elements */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
       <div className="absolute top-1/2 left-1/4 w-[500px] h-[500px] bg-primary/3 rounded-full blur-[200px]" />
-      
+
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
-        <div className={`max-w-3xl mx-auto text-center mb-20 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div
+          className={`max-w-3xl mx-auto text-center mb-20 transition-all duration-1000 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
           <span className="text-primary font-light text-sm uppercase tracking-[0.3em] mb-6 block">
             Contact Us
           </span>
@@ -65,17 +71,29 @@ const ContactSection = () => {
             <span className="text-gradient italic">Digital Presence</span>
           </h2>
           <p className="text-lg text-muted-foreground font-light leading-relaxed">
-            Ready to get started? Send us a message or connect directly via WhatsApp.
+            Ready to get started? Send us a message or connect directly via
+            WhatsApp.
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 max-w-5xl mx-auto">
           {/* Contact Form */}
-          <div className={`card-luxury rounded-lg p-8 lg:p-10 transition-all duration-1000 delay-150 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
-            <h3 className="font-display text-xl text-foreground mb-8">Send Us a Message</h3>
+          <div
+            className={`card-luxury rounded-lg p-8 lg:p-10 transition-all duration-1000 delay-150 ${
+              isVisible
+                ? "opacity-100 translate-x-0"
+                : "opacity-0 -translate-x-8"
+            }`}
+          >
+            <h3 className="font-display text-xl text-foreground mb-8">
+              Send Us a Message
+            </h3>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label htmlFor="name" className="block text-sm font-light mb-2 text-muted-foreground uppercase tracking-wider">
+                <label
+                  htmlFor="name"
+                  className="block text-sm font-light mb-2 text-muted-foreground uppercase tracking-wider"
+                >
                   Your Name
                 </label>
                 <Input
@@ -90,7 +108,10 @@ const ContactSection = () => {
                 />
               </div>
               <div>
-                <label htmlFor="phone" className="block text-sm font-light mb-2 text-muted-foreground uppercase tracking-wider">
+                <label
+                  htmlFor="phone"
+                  className="block text-sm font-light mb-2 text-muted-foreground uppercase tracking-wider"
+                >
                   Phone Number
                 </label>
                 <Input
@@ -105,7 +126,10 @@ const ContactSection = () => {
                 />
               </div>
               <div>
-                <label htmlFor="message" className="block text-sm font-light mb-2 text-muted-foreground uppercase tracking-wider">
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-light mb-2 text-muted-foreground uppercase tracking-wider"
+                >
                   Message
                 </label>
                 <Textarea
@@ -139,17 +163,30 @@ const ContactSection = () => {
           </div>
 
           {/* Contact Info */}
-          <div className={`flex flex-col justify-center transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}>
+          <div
+            className={`flex flex-col justify-center transition-all duration-1000 delay-300 ${
+              isVisible
+                ? "opacity-100 translate-x-0"
+                : "opacity-0 translate-x-8"
+            }`}
+          >
             <div className="space-y-8">
               {/* WhatsApp CTA */}
               <div className="card-luxury rounded-lg p-6 border-[hsl(142_70%_45%)]/20">
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-12 h-12 rounded border border-[hsl(142_70%_45%)]/30 flex items-center justify-center">
-                    <MessageCircle className="text-[hsl(142_70%_45%)]" size={22} />
+                    <MessageCircle
+                      className="text-[hsl(142_70%_45%)]"
+                      size={22}
+                    />
                   </div>
                   <div>
-                    <h4 className="font-display text-lg text-foreground">Prefer WhatsApp?</h4>
-                    <p className="text-muted-foreground text-sm font-light">Get instant response</p>
+                    <h4 className="font-display text-lg text-foreground">
+                      Prefer WhatsApp?
+                    </h4>
+                    <p className="text-muted-foreground text-sm font-light">
+                      Get instant response
+                    </p>
                   </div>
                 </div>
                 <Button variant="whatsapp" size="lg" className="w-full" asChild>
@@ -171,9 +208,14 @@ const ContactSection = () => {
                     <Mail className="text-primary" size={16} />
                   </div>
                   <div>
-                    <p className="text-xs text-muted-foreground uppercase tracking-wider">Email</p>
-                    <a href="mailto:hello@kodude.in" className="font-light text-foreground hover:text-primary transition-colors">
-                      hello@kodude.in
+                    <p className="text-xs text-muted-foreground uppercase tracking-wider">
+                      Email
+                    </p>
+                    <a
+                      href="mailto:kodude.in@gmail.com"
+                      className="font-light text-foreground hover:text-primary transition-colors"
+                    >
+                      kodude.in@gmail.com
                     </a>
                   </div>
                 </div>
@@ -183,9 +225,14 @@ const ContactSection = () => {
                     <Phone className="text-primary" size={16} />
                   </div>
                   <div>
-                    <p className="text-xs text-muted-foreground uppercase tracking-wider">Phone</p>
-                    <a href="tel:+919876543210" className="font-light text-foreground hover:text-primary transition-colors">
-                      +91 98765 43210
+                    <p className="text-xs text-muted-foreground uppercase tracking-wider">
+                      Phone
+                    </p>
+                    <a
+                      href="tel:+918077533278"
+                      className="font-light text-foreground hover:text-primary transition-colors"
+                    >
+                      +91 8077533278
                     </a>
                   </div>
                 </div>
@@ -195,8 +242,12 @@ const ContactSection = () => {
                     <MapPin className="text-primary" size={16} />
                   </div>
                   <div>
-                    <p className="text-xs text-muted-foreground uppercase tracking-wider">Location</p>
-                    <p className="font-light text-foreground">India (Remote-First)</p>
+                    <p className="text-xs text-muted-foreground uppercase tracking-wider">
+                      Location
+                    </p>
+                    <p className="font-light text-foreground">
+                      Noida, Uttar Pradesh, India
+                    </p>
                   </div>
                 </div>
               </div>
@@ -204,8 +255,10 @@ const ContactSection = () => {
               {/* Final CTA */}
               <div className="pt-6 border-t border-border/50">
                 <p className="text-muted-foreground text-sm font-light leading-relaxed">
-                  We typically respond within <span className="text-primary font-medium">2-4 hours</span> during business hours.
-                  Start with a free consultation — no commitments.
+                  We typically respond within{" "}
+                  <span className="text-primary font-medium">2-4 hours</span>{" "}
+                  during business hours. Start with a free consultation — no
+                  commitments.
                 </p>
               </div>
             </div>
