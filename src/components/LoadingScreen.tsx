@@ -50,12 +50,19 @@ const LoadingScreen = ({ onLoadingComplete }: LoadingScreenProps) => {
         {/* Logo icon with gold border animation */}
         <div className="relative mb-8">
           <motion.div
-            className="w-20 h-20 rounded-lg bg-gradient-gold flex items-center justify-center shadow-glow"
+            className="w-20 h-20 rounded-lg bg-gradient-gold p-1 overflow-hidden shadow-glow"
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           >
-            <span className="text-primary-foreground font-display font-bold text-4xl">K</span>
+            <div className="h-full w-full rounded-md overflow-hidden">
+              <img
+                src="/Logo.png"
+                alt="KoDude Technology logo"
+                className="h-full w-full object-cover object-center scale-130"
+                loading="lazy"
+              />
+            </div>
           </motion.div>
           
           {/* Rotating gold ring */}
@@ -86,8 +93,13 @@ const LoadingScreen = ({ onLoadingComplete }: LoadingScreenProps) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <h1 className="font-display text-3xl text-foreground tracking-wide mb-2">KoDude</h1>
-          <p className="text-xs text-muted-foreground uppercase tracking-[0.3em]">Technology</p>
+          <img
+            src="/LogoFull.png"
+            alt="KoDude Technology wordmark"
+            className="mx-auto h-12 w-auto max-w-[200px] drop-shadow-sm"
+            loading="lazy"
+          />
+          <p className="mt-2 text-xs text-muted-foreground uppercase tracking-[0.3em]">Technology</p>
         </motion.div>
 
         {/* Progress bar */}

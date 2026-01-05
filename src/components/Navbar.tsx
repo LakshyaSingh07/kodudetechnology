@@ -42,10 +42,20 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded bg-gradient-gold flex items-center justify-center shadow-gold group-hover:shadow-glow transition-all duration-500">
-              <span className="text-primary-foreground font-display font-bold text-xl">K</span>
+            <div className="h-10 w-10 overflow-hidden rounded-lg shadow-gold group-hover:shadow-glow transition-all duration-500">
+              <img
+                src="/Logo.png"
+                alt="KoDude Technology logo"
+                className="h-full w-full object-cover object-center transition-transform duration-300 scale-135 group-hover:scale-145"
+                loading="lazy"
+              />
             </div>
-            <span className="font-display text-xl text-foreground tracking-wide">KoDude</span>
+            <img
+              src="/LogoFull.png"
+              alt="KoDude Technology wordmark"
+              className="h-9 w-auto max-w-[170px] transition-transform duration-300 group-hover:scale-105"
+              loading="lazy"
+            />
           </Link>
 
           {/* Desktop Navigation */}
