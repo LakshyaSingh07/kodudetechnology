@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { MessageCircle, Mail, Phone, MapPin, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { useForm, ValidationError } from "@formspree/react";
 
 const WHATSAPP_NUMBER = "918077533278";
 const WHATSAPP_MESSAGE = encodeURIComponent(
@@ -14,28 +15,22 @@ const WHATSAPP_MESSAGE = encodeURIComponent(
 const ContactSection = () => {
   const { toast } = useToast();
   const { ref, isVisible } = useScrollAnimation();
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [state, handleFormSubmit] = useForm("xvzgldde");
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
     message: "",
   });
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-
-    toast({
-      title: "Message Sent!",
-      description: "We'll get back to you within 24 hours.",
-    });
-
-    setFormData({ name: "", phone: "", message: "" });
-    setIsSubmitting(false);
-  };
+  useEffect(() => {
+    if (state.succeeded) {
+      toast({
+        title: "Message Sent!",
+        description: "We'll get back to you within 24 hours.",
+      });
+      setFormData({ name: "", phone: "", message: "" });
+    }
+  }, [state.succeeded, toast]);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -88,7 +83,7 @@ const ContactSection = () => {
             <h3 className="font-display text-xl text-foreground mb-8">
               Send Us a Message
             </h3>
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleFormSubmit} className="space-y-6">
               <div>
                 <label
                   htmlFor="name"
@@ -105,6 +100,11 @@ const ContactSection = () => {
                   onChange={handleChange}
                   required
                   className="bg-muted/50 border-border text-foreground placeholder:text-muted-foreground focus:border-primary rounded"
+                />
+                <ValidationError
+                  prefix="Name"
+                  field="name"
+                  errors={state.errors}
                 />
               </div>
               <div>
@@ -124,6 +124,11 @@ const ContactSection = () => {
                   required
                   className="bg-muted/50 border-border text-foreground placeholder:text-muted-foreground focus:border-primary rounded"
                 />
+                <ValidationError
+                  prefix="Phone"
+                  field="phone"
+                  errors={state.errors}
+                />
               </div>
               <div>
                 <label
@@ -142,15 +147,20 @@ const ContactSection = () => {
                   required
                   className="bg-muted/50 border-border text-foreground placeholder:text-muted-foreground focus:border-primary resize-none rounded"
                 />
+                <ValidationError
+                  prefix="Message"
+                  field="message"
+                  errors={state.errors}
+                />
               </div>
               <Button
                 type="submit"
                 variant="default"
                 size="lg"
                 className="w-full"
-                disabled={isSubmitting}
+                disabled={state.submitting}
               >
-                {isSubmitting ? (
+                {state.submitting ? (
                   "Sending..."
                 ) : (
                   <>
