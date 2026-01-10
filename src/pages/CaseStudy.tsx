@@ -1,50 +1,67 @@
 import { Link, useParams } from "react-router-dom";
-import { ArrowLeft, ArrowUpRight, CheckCircle2, TrendingUp, Users, Clock, Target } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowUpRight,
+  CheckCircle2,
+  TrendingUp,
+  Users,
+  Clock,
+  Target,
+} from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import SEO, { generateBreadcrumbSchema } from "@/components/SEO";
 
-const caseStudies: Record<string, {
-  title: string;
-  client: string;
-  category: string;
-  duration: string;
-  overview: string;
-  challenge: string;
-  solution: string;
-  results: { label: string; value: string; icon: React.ElementType }[];
-  features: string[];
-  testimonial: { quote: string; author: string; role: string };
-  gradient: string;
-}> = {
-  "sharma-properties": {
-    title: "Sharma Properties",
-    client: "Sharma Properties",
-    category: "Real Estate Agent",
-    duration: "3 weeks",
+const caseStudies: Record<
+  string,
+  {
+    title: string;
+    client: string;
+    category: string;
+    duration: string;
+    overview: string;
+    challenge: string;
+    solution: string;
+    results: { label: string; value: string; icon: React.ElementType }[];
+    features: string[];
+    testimonial: { quote: string; author: string; role: string };
+    gradient: string;
+  }
+> = {
+  "tanish-rc": {
+    title: "TanishRC.in",
+    client: "Tanish RC",
+    category: "Ecommerce Marketplace",
+    duration: "4 weeks",
     gradient: "from-primary/30 via-accent/20 to-primary/10",
-    overview: "Sharma Properties is a leading real estate agency in Mumbai, specializing in residential and commercial properties. They approached us to create a modern online presence that would help them stand out in a competitive market.",
-    challenge: "The client was struggling with lead generation through traditional methods. Their old website was outdated, not mobile-friendly, and lacked any integration with modern communication tools. They were losing potential clients to competitors with better digital presence.",
-    solution: "We designed and developed a completely new website with a focus on lead generation. The site features an intuitive property listing system, WhatsApp integration for instant inquiries, SEO optimization for local searches, and a mobile-first responsive design.",
+    overview:
+      "TanishRC.in is a niche ecommerce marketplace dedicated to RC planes, RC parts, and accessories for hobbyists and professionals. The client wanted a scalable online store that could handle product variety, secure payments, and deliver a smooth shopping experience while building trust within the RC community.",
+    challenge:
+      "The business previously relied on offline sales and social media inquiries, which limited reach and scalability. They needed a professional ecommerce platform to manage inventory, accept online payments, showcase technical products clearly, and establish credibility in a competitive niche market.",
+    solution:
+      "We built a full-featured WordPress-based ecommerce website using WooCommerce, designed for performance, clarity, and ease of use. The platform focuses on product discovery, detailed specifications, and a seamless checkout flow, ensuring both beginners and experienced RC enthusiasts can shop with confidence.",
     results: [
-      { label: "Increase in Leads", value: "40%", icon: TrendingUp },
-      { label: "Monthly Visitors", value: "2,500+", icon: Users },
-      { label: "Load Time", value: "1.8s", icon: Clock },
-      { label: "SEO Ranking", value: "Top 10", icon: Target },
+      { label: "Increase in Online Orders", value: "70%+", icon: TrendingUp },
+      { label: "Monthly Visitors", value: "6,000+", icon: Users },
+      { label: "Average Session Duration", value: "3.8min", icon: Clock },
+      { label: "Repeat Customers", value: "40%+", icon: Target },
     ],
     features: [
-      "Responsive property listing pages",
-      "WhatsApp click-to-chat integration",
-      "Contact form with lead capture",
-      "Google Maps integration",
-      "SEO-optimized content",
-      "Fast-loading optimized images",
+      "WooCommerce-powered ecommerce system",
+      "Category-based product organization",
+      "Detailed product pages with specifications",
+      "Secure payment gateway integration",
+      "Mobile-optimized shopping experience",
+      "Order management and inventory control",
+      "Customer account and order tracking",
+      "SEO-friendly structure for organic growth",
     ],
     testimonial: {
-      quote: "KoDude Technology transformed our business. The new website brings in quality leads every day, and the WhatsApp integration has been a game-changer for our client communication.",
-      author: "Rajesh Sharma",
-      role: "Owner, Sharma Properties",
+      quote:
+        "KoDude Technology delivered exactly what we needed. The website has helped us reach RC enthusiasts across India and manage our business far more efficiently. Our online sales and customer trust have grown significantly.",
+      author: "Tanish",
+      role: "Founder, TanishRC.in",
     },
   },
   "horizon-builders": {
@@ -53,9 +70,12 @@ const caseStudies: Record<string, {
     category: "Construction Company",
     duration: "4 weeks",
     gradient: "from-accent/30 via-primary/20 to-accent/10",
-    overview: "Horizon Builders is a premium construction company known for quality residential and commercial projects. They needed a website that would reflect their premium positioning and showcase their impressive portfolio.",
-    challenge: "The company had no online presence and relied entirely on word-of-mouth referrals. They needed to establish credibility with potential clients and partners, and provide a platform to showcase their completed projects professionally.",
-    solution: "We created a sophisticated corporate website with elegant design elements, comprehensive project galleries, and detailed company information. The site emphasizes their expertise and quality through stunning visuals and compelling storytelling.",
+    overview:
+      "Horizon Builders is a premium construction company known for quality residential and commercial projects. They needed a website that would reflect their premium positioning and showcase their impressive portfolio.",
+    challenge:
+      "The company had no online presence and relied entirely on word-of-mouth referrals. They needed to establish credibility with potential clients and partners, and provide a platform to showcase their completed projects professionally.",
+    solution:
+      "We created a sophisticated corporate website with elegant design elements, comprehensive project galleries, and detailed company information. The site emphasizes their expertise and quality through stunning visuals and compelling storytelling.",
     results: [
       { label: "New Inquiries", value: "85%", icon: TrendingUp },
       { label: "Portfolio Views", value: "4,200+", icon: Users },
@@ -71,7 +91,8 @@ const caseStudies: Record<string, {
       "Contact and inquiry forms",
     ],
     testimonial: {
-      quote: "Our website now truly represents the quality of our work. We have received inquiries from clients we never would have reached before. The investment has paid for itself many times over.",
+      quote:
+        "Our website now truly represents the quality of our work. We have received inquiries from clients we never would have reached before. The investment has paid for itself many times over.",
       author: "Anil Mehta",
       role: "Director, Horizon Builders",
     },
@@ -82,9 +103,12 @@ const caseStudies: Record<string, {
     category: "Property Developer",
     duration: "5 weeks",
     gradient: "from-primary/25 via-accent/25 to-primary/15",
-    overview: "Metro Realty is a property development company with multiple ongoing projects across the city. They required a comprehensive platform to showcase all their developments and capture leads for each project individually.",
-    challenge: "Managing multiple projects with different target audiences was challenging. They needed a centralized platform that could present each project with its unique identity while maintaining brand consistency.",
-    solution: "We developed a multi-project website architecture with individual landing pages for each development. The system includes project-specific lead capture, comparison tools, and a unified backend for easy management.",
+    overview:
+      "Metro Realty is a property development company with multiple ongoing projects across the city. They required a comprehensive platform to showcase all their developments and capture leads for each project individually.",
+    challenge:
+      "Managing multiple projects with different target audiences was challenging. They needed a centralized platform that could present each project with its unique identity while maintaining brand consistency.",
+    solution:
+      "We developed a multi-project website architecture with individual landing pages for each development. The system includes project-specific lead capture, comparison tools, and a unified backend for easy management.",
     results: [
       { label: "Lead Quality", value: "60%", icon: TrendingUp },
       { label: "Site Visits", value: "8,000+", icon: Users },
@@ -100,7 +124,8 @@ const caseStudies: Record<string, {
       "Downloadable brochures",
     ],
     testimonial: {
-      quote: "The website perfectly showcases all our projects while maintaining our brand identity. The lead management system has streamlined our sales process significantly.",
+      quote:
+        "The website perfectly showcases all our projects while maintaining our brand identity. The lead management system has streamlined our sales process significantly.",
       author: "Priya Desai",
       role: "Marketing Head, Metro Realty",
     },
@@ -122,7 +147,9 @@ const CaseStudy = () => {
         <Navbar />
         <div className="min-h-screen flex items-center justify-center bg-background">
           <div className="text-center">
-            <h1 className="text-4xl font-display text-foreground mb-4">Case Study Not Found</h1>
+            <h1 className="text-4xl font-display text-foreground mb-4">
+              Case Study Not Found
+            </h1>
             <Link to="/portfolio" className="text-primary hover:underline">
               Back to Portfolio
             </Link>
@@ -180,12 +207,14 @@ const CaseStudy = () => {
         <Navbar />
 
         {/* Hero */}
-        <section className={`pt-32 pb-20 bg-gradient-to-br ${study.gradient} relative overflow-hidden`}>
+        <section
+          className={`pt-32 pb-20 bg-gradient-to-br ${study.gradient} relative overflow-hidden`}
+        >
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
-          
+
           <div className="container mx-auto px-4 lg:px-8 relative z-10">
-            <Link 
-              to="/portfolio" 
+            <Link
+              to="/portfolio"
               className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors mb-8"
             >
               <ArrowLeft className="w-4 h-4" />
@@ -201,7 +230,7 @@ const CaseStudy = () => {
                   Duration: {study.duration}
                 </span>
               </div>
-              
+
               <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground mb-6">
                 {study.title}
               </h1>
@@ -220,7 +249,10 @@ const CaseStudy = () => {
               {study.results.map((result) => (
                 <div key={result.label} className="text-center">
                   <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-primary/10 flex items-center justify-center">
-                    <result.icon className="w-6 h-6 text-primary" aria-hidden="true" />
+                    <result.icon
+                      className="w-6 h-6 text-primary"
+                      aria-hidden="true"
+                    />
                   </div>
                   <div className="font-display text-3xl md:text-4xl text-primary mb-2">
                     {result.value}
@@ -240,13 +272,17 @@ const CaseStudy = () => {
             <div className="max-w-4xl mx-auto">
               <div className="grid md:grid-cols-2 gap-12">
                 <div>
-                  <h2 className="font-display text-2xl text-foreground mb-4">The Challenge</h2>
+                  <h2 className="font-display text-2xl text-foreground mb-4">
+                    The Challenge
+                  </h2>
                   <p className="text-muted-foreground leading-relaxed">
                     {study.challenge}
                   </p>
                 </div>
                 <div>
-                  <h2 className="font-display text-2xl text-foreground mb-4">Our Solution</h2>
+                  <h2 className="font-display text-2xl text-foreground mb-4">
+                    Our Solution
+                  </h2>
                   <p className="text-muted-foreground leading-relaxed">
                     {study.solution}
                   </p>
@@ -265,11 +301,14 @@ const CaseStudy = () => {
               </h2>
               <div className="grid sm:grid-cols-2 gap-4">
                 {study.features.map((feature) => (
-                  <div 
+                  <div
                     key={feature}
                     className="flex items-center gap-3 p-4 bg-background rounded-xl border border-border"
                   >
-                    <CheckCircle2 className="w-5 h-5 text-primary shrink-0" aria-hidden="true" />
+                    <CheckCircle2
+                      className="w-5 h-5 text-primary shrink-0"
+                      aria-hidden="true"
+                    />
                     <span className="text-foreground">{feature}</span>
                   </div>
                 ))}
@@ -282,13 +321,19 @@ const CaseStudy = () => {
         <section className="py-20 bg-background">
           <div className="container mx-auto px-4 lg:px-8">
             <div className="max-w-3xl mx-auto text-center">
-              <div className="text-6xl text-primary/30 mb-6" aria-hidden="true">"</div>
+              <div className="text-6xl text-primary/30 mb-6" aria-hidden="true">
+                "
+              </div>
               <blockquote className="font-display text-xl md:text-2xl text-foreground mb-8 leading-relaxed">
                 {study.testimonial.quote}
               </blockquote>
               <div>
-                <div className="font-semibold text-foreground">{study.testimonial.author}</div>
-                <div className="text-sm text-muted-foreground">{study.testimonial.role}</div>
+                <div className="font-semibold text-foreground">
+                  {study.testimonial.author}
+                </div>
+                <div className="text-sm text-muted-foreground">
+                  {study.testimonial.role}
+                </div>
               </div>
             </div>
           </div>
@@ -301,7 +346,8 @@ const CaseStudy = () => {
               Ready for Similar Results?
             </h2>
             <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
-              Let us discuss how we can help transform your business with a stunning website.
+              Let us discuss how we can help transform your business with a
+              stunning website.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Button asChild size="lg">
