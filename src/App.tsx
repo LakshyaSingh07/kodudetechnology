@@ -15,7 +15,7 @@ import Pricing from "./pages/Pricing";
 import Process from "./pages/Process";
 import Testimonials from "./pages/Testimonials";
 import FAQ from "./pages/FAQ";
-import Contact from "./pages/Contact";
+import Contact from "./pages/Contact"; 
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import CaseStudy from "./pages/CaseStudy";
