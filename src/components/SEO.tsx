@@ -36,13 +36,19 @@ const SEO = ({
 }: SEOProps) => {
   const toAbsoluteUrl = (value?: string) => {
     if (!value) return undefined;
-    return value.startsWith("http") ? value : `${SITE_URL}${value.startsWith("/") ? value : `/${value}`}`;
+    return value.startsWith("http")
+      ? value
+      : `${SITE_URL}${value.startsWith("/") ? value : `/${value}`}`;
   };
 
-  const fullTitle = title.includes("KoDude") ? title : `${title} | ${SITE_NAME}`;
+  const fullTitle = title.includes("KoDude")
+    ? title
+    : `${title} | ${SITE_NAME}`;
   const canonicalUrl = toAbsoluteUrl(canonical);
   const imageUrl = toAbsoluteUrl(image) ?? DEFAULT_IMAGE;
-  const metaKeywords = keywords.length ? Array.from(new Set(keywords)).join(", ") : undefined;
+  const metaKeywords = keywords.length
+    ? Array.from(new Set(keywords)).join(", ")
+    : undefined;
 
   // Organization structured data (always included)
   const organizationSchema = {
@@ -51,7 +57,8 @@ const SEO = ({
     name: "KoDude Technology",
     url: SITE_URL,
     logo: `${SITE_URL}/favicon.svg`,
-    description: "Premium web development services for local businesses in India",
+    description:
+      "Premium web development services for local businesses in India",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Noida",
@@ -76,14 +83,24 @@ const SEO = ({
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: SITE_NAME,
+    alternateName: "KoDude Technology",
     url: SITE_URL,
+    potentialAction: {
+      "@type": "SearchAction",
+      target: "https://kodude.in/search?q={search_term_string}",
+      "query-input": "required name=search_term_string",
+    },
   };
 
   // Combine all structured data
   const allStructuredData = [
     organizationSchema,
     websiteSchema,
-    ...(Array.isArray(structuredData) ? structuredData : structuredData ? [structuredData] : []),
+    ...(Array.isArray(structuredData)
+      ? structuredData
+      : structuredData
+      ? [structuredData]
+      : []),
   ];
 
   return (
@@ -93,12 +110,18 @@ const SEO = ({
       <meta name="description" content={description} />
       {metaKeywords && <meta name="keywords" content={metaKeywords} />}
       <meta name="author" content={author} />
-      <meta name="robots" content={noIndex ? "noindex, nofollow" : "index, follow"} />
-      <meta name="googlebot" content={noIndex ? "noindex, nofollow" : "index, follow"} />
-      
+      <meta
+        name="robots"
+        content={noIndex ? "noindex, nofollow" : "index, follow"}
+      />
+      <meta
+        name="googlebot"
+        content={noIndex ? "noindex, nofollow" : "index, follow"}
+      />
+
       {/* Canonical URL */}
       {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
-      
+
       {/* Open Graph / Facebook */}
       <meta property="og:type" content={type} />
       <meta property="og:site_name" content={SITE_NAME} />
@@ -110,7 +133,7 @@ const SEO = ({
       <meta property="og:image:height" content="630" />
       {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
       <meta property="og:locale" content="en_US" />
-      
+
       {/* Article specific OG tags */}
       {type === "article" && publishedTime && (
         <meta property="article:published_time" content={publishedTime} />
@@ -121,7 +144,7 @@ const SEO = ({
       {type === "article" && (
         <meta property="article:author" content={author} />
       )}
-      
+
       {/* Twitter Card */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:site" content={TWITTER_HANDLE} />
@@ -130,16 +153,16 @@ const SEO = ({
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={imageUrl} />
       <meta name="twitter:image:alt" content={imageAlt} />
-      
+
       {/* Additional SEO Tags */}
       <meta name="theme-color" content="#D4AF37" />
       <meta name="msapplication-TileColor" content="#0A0A0F" />
       <meta name="format-detection" content="telephone=no" />
-      
+
       {/* Geo Tags for Local SEO */}
       <meta name="geo.region" content="IN-UP" />
       <meta name="geo.placename" content="Noida, Uttar Pradesh" />
-      
+
       {/* Structured Data */}
       {allStructuredData.map((data, index) => (
         <script
@@ -155,7 +178,9 @@ const SEO = ({
 export default SEO;
 
 // Pre-built structured data generators
-export const generateFAQSchema = (faqs: { question: string; answer: string }[]) => ({
+export const generateFAQSchema = (
+  faqs: { question: string; answer: string }[]
+) => ({
   "@context": "https://schema.org",
   "@type": "FAQPage",
   mainEntity: faqs.map((faq) => ({
@@ -168,7 +193,9 @@ export const generateFAQSchema = (faqs: { question: string; answer: string }[]) 
   })),
 });
 
-export const generateServiceSchema = (services: { name: string; description: string }[]) => ({
+export const generateServiceSchema = (
+  services: { name: string; description: string }[]
+) => ({
   "@context": "https://schema.org",
   "@type": "ItemList",
   itemListElement: services.map((service, index) => ({
@@ -186,7 +213,9 @@ export const generateServiceSchema = (services: { name: string; description: str
   })),
 });
 
-export const generateBreadcrumbSchema = (items: { name: string; url: string }[]) => ({
+export const generateBreadcrumbSchema = (
+  items: { name: string; url: string }[]
+) => ({
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: items.map((item, index) => ({
