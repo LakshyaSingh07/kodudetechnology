@@ -25,10 +25,16 @@ const Index = () => {
   return (
     <>
       <SEO
-        title="KoDude Technology | Premium Web Development for Real Estate & Businesses"
-        description="KoDude Technology builds modern, high-performing websites for Indian real estate agents and businesses. Get a free homepage sample. Starting at ₹5,999."
+        title="KoDude Technology | Premium Web Development for local Businesses in India"
+        description="KoDude Technology builds modern, high-performing websites for Indian businesses. Get a free homepage sample. Starting at ₹5,999."
         canonical="/"
         keywords={[
+          "Lakshya Singh",
+          "KoDude Technology",
+          "KoDude",
+          "web development",
+          "website design",
+          "website development India",
           "web development India",
           "real estate website",
           "property website design",
