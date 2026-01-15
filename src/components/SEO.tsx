@@ -50,7 +50,7 @@ const SEO = ({
     "@type": "Organization",
     name: "KoDude Technology",
     url: SITE_URL,
-    logo: `${SITE_URL}/favicon.ico`,
+    logo: `${SITE_URL}/favicon.svg`,
     description: "Premium web development services for local businesses in India",
     address: {
       "@type": "PostalAddress",

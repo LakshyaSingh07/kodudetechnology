@@ -21,7 +21,7 @@ const Footer = () => {
   const socialLinks = [
     { icon: Linkedin, href: "#", label: "LinkedIn" },
     { icon: Twitter, href: "#", label: "Twitter" },
-    { icon: Instagram, href: "#", label: "Instagram" },
+    { icon: Instagram, href: "https://www.instagram.com/kodude.in/", label: "Instagram" },
     { icon: Github, href: "#", label: "GitHub" },
   ];
 
