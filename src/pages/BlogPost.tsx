@@ -18,9 +18,9 @@ const blogContent: Record<string, {
   "why-real-estate-needs-website": {
     title: "Why Every Real Estate Agent Needs a Website in 2024",
     category: "Real Estate",
-    author: "KoDude Team",
-    date: "Dec 20, 2024",
-    dateISO: "2024-12-20",
+    author: "Lakshya Singh",
+    date: "Jan 14, 2026",
+    dateISO: "2026-01-14",
     readTime: "5 min read",
     image: "from-primary/30 via-accent/20 to-primary/10",
     content: [
@@ -34,9 +34,9 @@ const blogContent: Record<string, {
   "seo-tips-small-business": {
     title: "10 SEO Tips That Will Skyrocket Your Small Business",
     category: "SEO",
-    author: "KoDude Team",
-    date: "Dec 15, 2024",
-    dateISO: "2024-12-15",
+    author: "Lakshya Singh",
+    date: "Jan 15, 2026",
+    dateISO: "2026-01-15",
     readTime: "7 min read",
     image: "from-accent/30 via-primary/20 to-accent/10",
     content: [
@@ -50,9 +50,9 @@ const blogContent: Record<string, {
   "website-design-trends-2024": {
     title: "Top Website Design Trends to Watch in 2024",
     category: "Design",
-    author: "KoDude Team",
-    date: "Dec 10, 2024",
-    dateISO: "2024-12-10",
+    author: "Lakshya Singh",
+    date: "Jan 10, 2026",
+    dateISO: "2026-01-10",
     readTime: "6 min read",
     image: "from-primary/25 via-accent/25 to-primary/15",
     content: [
@@ -66,9 +66,9 @@ const blogContent: Record<string, {
   "whatsapp-business-integration": {
     title: "How WhatsApp Integration Can Double Your Leads",
     category: "Marketing",
-    author: "KoDude Team",
-    date: "Dec 5, 2024",
-    dateISO: "2024-12-05",
+    author: "Lakshya Singh",
+    date: "Jan 5, 2026",
+    dateISO: "2026-01-05",
     readTime: "4 min read",
     image: "from-accent/25 via-primary/25 to-accent/15",
     content: [
@@ -82,9 +82,9 @@ const blogContent: Record<string, {
   "mobile-first-design": {
     title: "Mobile-First Design: Why It Matters for Your Business",
     category: "Development",
-    author: "KoDude Team",
-    date: "Nov 28, 2024",
-    dateISO: "2024-11-28",
+    author: "Lakshya Singh",
+    date: "Jan 15, 2026",
+    dateISO: "2026-01-15",
     readTime: "5 min read",
     image: "from-primary/20 via-accent/30 to-primary/20",
     content: [
@@ -98,9 +98,9 @@ const blogContent: Record<string, {
   "converting-visitors-customers": {
     title: "5 Proven Ways to Convert Website Visitors into Customers",
     category: "Conversion",
-    author: "KoDude Team",
-    date: "Nov 20, 2024",
-    dateISO: "2024-11-20",
+    author: "Lakshya Singh",
+    date: "Jan 20, 2026",
+    dateISO: "2026-01-20",
     readTime: "8 min read",
     image: "from-accent/20 via-primary/30 to-accent/20",
     content: [
