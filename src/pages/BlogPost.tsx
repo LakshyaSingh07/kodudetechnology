@@ -16,7 +16,7 @@ const blogContent: Record<string, {
   image: string;
 }> = {
   "why-real-estate-needs-website": {
-    title: "Why Every Real Estate Agent Needs a Website in 2024",
+    title: "Why Every Real Estate Agent Needs a Website in 2026",
     category: "Real Estate",
     author: "Lakshya Singh",
     date: "Jan 14, 2026",
@@ -47,8 +47,8 @@ const blogContent: Record<string, {
       "Technical SEO matters too. Ensure your website loads quickly, is mobile-friendly, uses HTTPS, and has a clear site structure. These factors directly impact your search rankings.",
     ],
   },
-  "website-design-trends-2024": {
-    title: "Top Website Design Trends to Watch in 2024",
+  "website-design-trends-2026": {
+    title: "Top Website Design Trends to Watch in 2026",
     category: "Design",
     author: "Lakshya Singh",
     date: "Jan 10, 2026",
@@ -56,7 +56,7 @@ const blogContent: Record<string, {
     readTime: "6 min read",
     image: "from-primary/25 via-accent/25 to-primary/15",
     content: [
-      "Web design is constantly evolving, and staying current with trends is essential for creating engaging user experiences. Here are the top trends shaping the digital landscape in 2024.",
+      "Web design is constantly evolving, and staying current with trends is essential for creating engaging user experiences. Here are the top trends shaping the digital landscape in 2026.",
       "Dark mode and rich, bold colors continue to dominate. Users appreciate the reduced eye strain and the premium feel that darker interfaces provide. Pair this with strategic use of vibrant accent colors for impact.",
       "Micro-interactions and subtle animations are becoming more sophisticated. These small details—hover effects, loading animations, scroll-triggered reveals—add polish and guide users through your content.",
       "AI-powered personalization is no longer futuristic. Websites are increasingly adapting content, recommendations, and even layouts based on user behavior and preferences.",
