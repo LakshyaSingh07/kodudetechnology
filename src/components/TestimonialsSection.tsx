@@ -3,24 +3,29 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const testimonials = [
   {
-    name: "Rajesh Patel",
-    role: "Real Estate Developer",
-    location: "Mumbai",
-    content: "Professional, clean work and smooth communication. KoDude delivered exactly what we needed for our property listings. The website immediately improved our online presence.",
+    name: "Tanish",
+    role: "Founder",
+    location: "India",
+    content:
+      "KoDude Technology helped us launch a professional ecommerce platform for RC parts and planes. The website is fast, easy to manage, and has significantly improved our online sales and customer experience.",
     rating: 5,
   },
+
   {
-    name: "Priya Sharma",
-    role: "Real Estate Agent",
-    location: "Delhi NCR",
-    content: "The website instantly improved our online presence. Clients now trust us more before even meeting us. The WhatsApp integration has been a game-changer for enquiries.",
+    name: "Lakshya Singh",
+    role: "Developer & Founder",
+    location: "India",
+    content:
+      "The portfolio website built by KoDude Technology perfectly represents my skills and personal brand. The clean design, strong performance, and smooth user experience have helped me attract better clients and showcase my work effectively.",
     rating: 5,
   },
+
   {
     name: "Vikram Singh",
     role: "Builder",
     location: "Pune",
-    content: "Affordable and high quality — exactly what small builders need. The team understood our requirements perfectly and delivered on time. Highly recommended!",
+    content:
+      "Affordable and high quality — exactly what small builders need. The team understood our requirements perfectly and delivered on time. Highly recommended!",
     rating: 5,
   },
 ];
@@ -29,12 +34,14 @@ const TestimonialsSection = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section 
+    <section
       className="py-20 lg:py-28 bg-background"
       ref={ref as React.RefObject<HTMLElement>}
     >
       <div className="container mx-auto px-4 lg:px-8">
-        <div className={`max-w-3xl mx-auto text-center mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div
+          className={`max-w-3xl mx-auto text-center mb-16 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+        >
           <span className="text-accent font-semibold text-sm uppercase tracking-wider mb-4 block">
             Testimonials
           </span>
@@ -50,7 +57,7 @@ const TestimonialsSection = () => {
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className={`bg-card rounded-2xl p-6 lg:p-8 border border-border hover:border-accent/30 transition-all duration-500 hover:shadow-lg relative ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+              className={`bg-card rounded-2xl p-6 lg:p-8 border border-border hover:border-accent/30 transition-all duration-500 hover:shadow-lg relative ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
               style={{ transitionDelay: `${index * 150}ms` }}
             >
               {/* Quote Icon */}
@@ -66,7 +73,9 @@ const TestimonialsSection = () => {
               </div>
 
               {/* Content */}
-              <p className="text-foreground mb-6 leading-relaxed">"{testimonial.content}"</p>
+              <p className="text-foreground mb-6 leading-relaxed">
+                "{testimonial.content}"
+              </p>
 
               {/* Author */}
               <div className="flex items-center gap-3">
@@ -74,7 +83,9 @@ const TestimonialsSection = () => {
                   {testimonial.name.charAt(0)}
                 </div>
                 <div>
-                  <p className="font-semibold text-foreground">{testimonial.name}</p>
+                  <p className="font-semibold text-foreground">
+                    {testimonial.name}
+                  </p>
                   <p className="text-sm text-muted-foreground">
                     {testimonial.role} • {testimonial.location}
                   </p>

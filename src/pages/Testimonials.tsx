@@ -21,28 +21,32 @@ const reviewSchema = {
       "@type": "Review",
       author: {
         "@type": "Person",
-        name: "Rajesh Sharma",
+        name: "Tanish",
       },
       reviewRating: {
         "@type": "Rating",
         ratingValue: "5",
         bestRating: "5",
       },
-      reviewBody: "KoDude Technology transformed our business with a stunning website. The WhatsApp integration has been a game-changer for client communication.",
+      reviewBody:
+        "KoDude Technology helped us take our RC business online with a fast, reliable, and easy-to-manage ecommerce website. The product presentation, performance, and overall user experience have significantly improved our sales and customer trust.",
     },
+
     {
       "@type": "Review",
       author: {
         "@type": "Person",
-        name: "Anil Mehta",
+        name: "Lakshya Singh",
       },
       reviewRating: {
         "@type": "Rating",
         ratingValue: "5",
         bestRating: "5",
       },
-      reviewBody: "Our website now truly represents the quality of our work. We have received inquiries from clients we never would have reached before.",
+      reviewBody:
+        "KoDude Technology built a portfolio website that truly reflects my skills and personal brand. The design, performance, and smooth user experience have helped me attract better clients and present my work more professionally.",
     },
+
     {
       "@type": "Review",
       author: {
@@ -54,7 +58,8 @@ const reviewSchema = {
         ratingValue: "5",
         bestRating: "5",
       },
-      reviewBody: "The website perfectly showcases all our projects while maintaining our brand identity. The lead management system has streamlined our sales process.",
+      reviewBody:
+        "The website perfectly showcases all our projects while maintaining our brand identity. The lead management system has streamlined our sales process.",
     },
   ],
 };
@@ -72,6 +77,8 @@ const Testimonials = () => {
           "web development reviews",
           "customer feedback",
           "real estate website reviews",
+          "kodude client testimonials",
+          "kodude customer reviews",
         ]}
         structuredData={[
           generateBreadcrumbSchema([
